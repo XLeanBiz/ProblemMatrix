@@ -13,13 +13,13 @@
 	</servlet-mapping>  
   
   <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>co.problemmatrix.server.GreetingServiceImpl</servlet-class>
+    <servlet-name>startupData</servlet-name>
+    <servlet-class>co.problemmatrix.server.StartupDataServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/problemmatrix/greet</url-pattern>
+    <servlet-name>startupData</servlet-name>
+    <url-pattern>/problemmatrix/startupData</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->

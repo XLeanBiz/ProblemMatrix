@@ -1,5 +1,8 @@
 package co.problemmatrix.client;
 
+import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.home.ProblemMatrixTable;
+import co.problemmatrix.client.interviews.ListInterviews;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginVerifyer;
 import co.uniqueid.authentication.client.login.facebook.InitializeFacebookLogin;
 
@@ -12,6 +15,17 @@ public class InitializeApplication {
 
 		new InitializeFacebookLogin(uniqueID, facebookAppID, REDIRECT_URL,
 				companyID, true);
+
+		ProblemMatrixPanel.vpMain.clear();
+
+		if (companyID != null) {
+
+			ListInterviews.list();
+
+		} else {
+
+			ProblemMatrixPanel.vpMain.add(new ProblemMatrixTable());
+		}
 	}
 
 	public static void VerifyFacebookLogin(final String authenticationCode) {

@@ -54,5 +54,6 @@ public class GWTEntryPoint implements EntryPoint {
 		}
 
 		InitializeApplication.initHome(uniqueID, company);
+		
 	}
 }

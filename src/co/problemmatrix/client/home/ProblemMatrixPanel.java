@@ -10,6 +10,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class ProblemMatrixPanel extends VerticalPanel {
 
+	public static VerticalPanel vpMain = new VerticalPanel();
+
 	public ProblemMatrixPanel() {
 
 		this.setSpacing(10);
@@ -27,7 +29,7 @@ public class ProblemMatrixPanel extends VerticalPanel {
 		HTML subtitle = new HTML(
 				"&nbsp;&nbsp;&nbsp;&nbsp;<b>Your shortest path to Customer Development</b>");
 		vp.add(subtitle);
-		
+
 		hp.add(vp);
 
 		HorizontalPanel hp2 = new HorizontalPanel();
@@ -46,6 +48,7 @@ public class ProblemMatrixPanel extends VerticalPanel {
 
 		this.add(new HTML("&nbsp;"));
 
-		this.add(new ProblemMatrixTable());
+		vpMain.setSize("100%", "100%");
+		this.add(vpMain);
 	}
 }
