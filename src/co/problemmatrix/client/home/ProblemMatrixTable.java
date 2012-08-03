@@ -9,7 +9,7 @@ public class ProblemMatrixTable extends FlexTable {
 
 		setSize("100%", "100%");
 		setBorderWidth(1);
-		setCellPadding(0);
+		setCellPadding(20);
 		setCellSpacing(0);
 		setStyleName("flextable");
 

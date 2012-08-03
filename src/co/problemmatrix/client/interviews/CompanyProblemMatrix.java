@@ -2,24 +2,27 @@ package co.problemmatrix.client.interviews;
 
 import java.util.ArrayList;
 
+import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.interviews.edit.EditProblemInterviewPage;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class CompanyProblemMatrix extends VerticalPanel {
+public class CompanyProblemMatrix extends FlexTable {
 
 	public CompanyProblemMatrix(JSONArray interviews) {
 
-		this.setSpacing(20);
-
-		FlexTable problemTable = new FlexTable();
-
-		problemTable.setBorderWidth(1);
-		problemTable.setCellSpacing(0);
-		problemTable.setCellPadding(20);
+		this.setSize("100%", "100%");
+		this.setBorderWidth(1);
+		this.setCellSpacing(0);
+		this.setCellPadding(20);
+		this.setStyleName("flextable");
 
 		ArrayList<String> personaList = new ArrayList<String>();
 
@@ -34,27 +37,36 @@ public class CompanyProblemMatrix extends VerticalPanel {
 
 			String persona = ConvertJson.getStringValue(interviewJson,
 					"persona");
+			if (persona == null) {
+				persona = "";
+			}
 
-			int personaRow = getPersonaRow(persona, personaList, problemTable);
+			int personaRow = getPersonaRow(persona, personaList, this);
+			
+			String problem = ConvertJson.convertToString(interviewJson
+					.get("problem"));
 
-			String problem1 = ConvertJson.convertToString(interviewJson
+			int problemRow = getProblemRow(problem, problemsList, this);
+
+			writeCustomerName(this, personaRow, problemRow, customerName,
+					interviewJson);
+
+			/*String problem1 = ConvertJson.convertToString(interviewJson
 					.get("problem1"));
 
-			int problemRow = getProblemRow(problem1, problemsList, problemTable);
+			problemRow = getProblemRow(problem1, problemsList, this);
 
-			writeCustomerName(problemTable, personaRow, problemRow,
-					customerName);
+			writeCustomerName(this, personaRow, problemRow, customerName,
+					interviewJson);
 
 			String problem2 = ConvertJson.convertToString(interviewJson
 					.get("problem2"));
 
-			problemRow = getProblemRow(problem2, problemsList, problemTable);
+			problemRow = getProblemRow(problem2, problemsList, this);
 
-			writeCustomerName(problemTable, personaRow, problemRow,
-					customerName);
+			writeCustomerName(this, personaRow, problemRow, customerName,
+					interviewJson);*/
 		}
-
-		this.add(problemTable);
 
 	}
 
@@ -119,19 +131,38 @@ public class CompanyProblemMatrix extends VerticalPanel {
 
 	private void writeCustomerName(FlexTable problemTable,
 			final int customerRow, final int problemRow,
-			final String customerName) {
+			final String customerName, final JSONObject interviewJson) {
 
-		String customersList = "";
+		VerticalPanel customersList = new VerticalPanel();
 
 		try {
 
-			customersList = problemTable.getHTML(customerRow, problemRow);
+			customersList = (VerticalPanel) problemTable.getWidget(customerRow,
+					problemRow);
+
+			if (customersList == null) {
+
+				customersList = new VerticalPanel();
+			}
 
 		} catch (Exception e) {
 
 		}
 
-		problemTable.setHTML(customerRow, problemRow, customersList + "<br>"
-				+ customerName);
+		HTML customerLink = new HTML("<a href=#>" + customerName + "</a>");
+		customerLink.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				ProblemMatrixPanel.vpMain.clear();
+				ProblemMatrixPanel.vpMain.add(new EditProblemInterviewPage(
+						interviewJson));
+			}
+		});
+
+		customersList.add(customerLink);
+
+		problemTable.setWidget(customerRow, problemRow, customersList);
 	}
 }

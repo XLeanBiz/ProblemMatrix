@@ -9,5 +9,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("startupData")
 public interface StartupDataService extends RemoteService {
 	
-	String listProblemInterviews(String company) throws IllegalArgumentException;
+	String listProblemInterviews(String company);
+	
+	String saveProblemInterview(String interview);
 }

@@ -1,8 +1,10 @@
 package co.problemmatrix.client.home;
 
+import co.problemmatrix.client.interviews.edit.AddInterviewButton;
 import co.uniqueid.authentication.client.companies.CompanyIcon;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginPanel;
 
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -46,9 +48,20 @@ public class ProblemMatrixPanel extends VerticalPanel {
 
 		this.add(hp);
 
-		this.add(new HTML("&nbsp;"));
+		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+		this.add(new AddInterviewButton());
+		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
+		vpMain.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		vpMain.setSize("100%", "100%");
-		this.add(vpMain);
+
+		FlexTable table = new FlexTable();
+		table.setSize("100%", "100%");
+		table.setCellPadding(0);
+		table.setCellSpacing(0);
+		table.setStyleName("flextable");
+		table.setWidget(0, 0, vpMain);
+
+		this.add(table);
 	}
 }

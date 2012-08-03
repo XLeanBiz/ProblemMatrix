@@ -7,6 +7,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface StartupDataServiceAsync {
 	
-	void listProblemInterviews(String company, AsyncCallback<String> callback)
-			throws IllegalArgumentException;
+	void listProblemInterviews(String company, AsyncCallback<String> callback);
+	
+	void saveProblemInterview(String interview, AsyncCallback<String> callback);
 }

@@ -14,7 +14,7 @@ public class ListProblemInterviews {
 
 	public static String list(final String company) {
 
-		String parameters = "kind=PersonaInterviews";
+		String parameters = "kind=ProblemsInterviews";
 		
 		parameters += "&filterField=company&filterValue="
 				+ company;
