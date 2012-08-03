@@ -1,10 +1,12 @@
 package co.problemmatrix.client.interviews.edit;
 
+import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 
 public class ButtonSaveProblemInterview extends Button {
@@ -18,11 +20,18 @@ public class ButtonSaveProblemInterview extends Button {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				getInterviewInformation(interview);
+				if (UniqueIDGlobalVariables.uniqueID != null) {
 
-				getInterviewQuesitons(interview);
+					getInterviewInformation(interview);
 
-				SaveProblemInterview.save(interview);
+					getInterviewQuesitons(interview);
+
+					SaveProblemInterview.save(interview);
+
+				} else {
+
+					Window.alert("Please login.");
+				}
 			}
 		});
 

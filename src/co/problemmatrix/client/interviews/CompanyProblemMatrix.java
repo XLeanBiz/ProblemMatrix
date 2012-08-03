@@ -32,9 +32,6 @@ public class CompanyProblemMatrix extends FlexTable {
 
 			final JSONObject interviewJson = (JSONObject) interviews.get(i);
 
-			String customerName = ConvertJson.getStringValue(interviewJson,
-					"customerName");
-
 			String persona = ConvertJson.getStringValue(interviewJson,
 					"persona");
 			if (persona == null) {
@@ -42,30 +39,13 @@ public class CompanyProblemMatrix extends FlexTable {
 			}
 
 			int personaRow = getPersonaRow(persona, personaList, this);
-			
+
 			String problem = ConvertJson.convertToString(interviewJson
 					.get("problem"));
 
 			int problemRow = getProblemRow(problem, problemsList, this);
 
-			writeCustomerName(this, personaRow, problemRow, customerName,
-					interviewJson);
-
-			/*String problem1 = ConvertJson.convertToString(interviewJson
-					.get("problem1"));
-
-			problemRow = getProblemRow(problem1, problemsList, this);
-
-			writeCustomerName(this, personaRow, problemRow, customerName,
-					interviewJson);
-
-			String problem2 = ConvertJson.convertToString(interviewJson
-					.get("problem2"));
-
-			problemRow = getProblemRow(problem2, problemsList, this);
-
-			writeCustomerName(this, personaRow, problemRow, customerName,
-					interviewJson);*/
+			writeCustomerName(this, personaRow, problemRow, interviewJson);
 		}
 
 	}
@@ -131,7 +111,7 @@ public class CompanyProblemMatrix extends FlexTable {
 
 	private void writeCustomerName(FlexTable problemTable,
 			final int customerRow, final int problemRow,
-			final String customerName, final JSONObject interviewJson) {
+			final JSONObject interviewJson) {
 
 		VerticalPanel customersList = new VerticalPanel();
 
@@ -149,7 +129,14 @@ public class CompanyProblemMatrix extends FlexTable {
 
 		}
 
-		HTML customerLink = new HTML("<a href=#>" + customerName + "</a>");
+		String customerName = ConvertJson.getStringValue(interviewJson,
+				"customerName");
+
+		String problemRate = ConvertJson.getStringValue(interviewJson,
+				"problemRate");
+
+		HTML customerLink = new HTML("<a href=#>" + customerName + " - "
+				+ problemRate + "</a>");
 		customerLink.addClickHandler(new ClickHandler() {
 
 			@Override
