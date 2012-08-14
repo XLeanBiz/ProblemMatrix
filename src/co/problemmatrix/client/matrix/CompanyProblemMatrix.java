@@ -1,9 +1,11 @@
-package co.problemmatrix.client.interviews;
+package co.problemmatrix.client.matrix;
 
 import java.util.ArrayList;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.interviews.edit.EditProblemInterviewPage;
+import co.problemmatrix.client.persona.GetPersona;
+import co.problemmatrix.client.utilities.UseTracking;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -23,6 +25,8 @@ public class CompanyProblemMatrix extends FlexTable {
 		this.setCellSpacing(0);
 		this.setCellPadding(20);
 		this.setStyleName("flextable");
+
+		writePersonaLink(this);
 
 		ArrayList<String> personaList = new ArrayList<String>();
 
@@ -48,6 +52,22 @@ public class CompanyProblemMatrix extends FlexTable {
 			writeCustomerName(this, personaRow, problemRow, interviewJson);
 		}
 
+	}
+
+	private void writePersonaLink(FlexTable problemTable) {
+
+		HTML personaTitle = new HTML(
+				"<a href=#><b>PERSONA</b></a>");
+		personaTitle.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+
+				new UseTracking(this.getClass().getName());
+
+				GetPersona.get("Event Organizer");
+			}
+		});
+
+		problemTable.setWidget(0, 0, personaTitle);
 	}
 
 	private int getPersonaRow(String targetPersona,

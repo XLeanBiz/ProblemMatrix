@@ -1,8 +1,8 @@
 package co.problemmatrix.client;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
-import co.problemmatrix.client.home.ProblemMatrixTable;
 import co.problemmatrix.client.interviews.ListInterviews;
+import co.problemmatrix.client.matrix.ProblemMatrixTable;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginVerifyer;
 import co.uniqueid.authentication.client.login.facebook.InitializeFacebookLogin;
 

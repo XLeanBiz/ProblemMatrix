@@ -1,4 +1,4 @@
-package co.problemmatrix.client.home;
+package co.problemmatrix.client.matrix;
 
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
