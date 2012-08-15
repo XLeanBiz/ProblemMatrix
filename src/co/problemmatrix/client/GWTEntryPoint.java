@@ -1,6 +1,7 @@
 package co.problemmatrix.client;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.interviews.customers.CustomerPage;
 import co.problemmatrix.client.utilities.UseTracking;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.EncryptText;
@@ -25,7 +26,6 @@ public class GWTEntryPoint implements EntryPoint {
 		new UseTracking(this.getClass().getName());
 
 		RootPanel.get("main").clear();
-		RootPanel.get("main").add(new ProblemMatrixPanel());
 
 		String uniqueID = EncryptText.decrypt(Cookies.getCookie("UniqueID"));
 		// uniqueID = "AllineWatkins_1332886062783";
@@ -53,7 +53,17 @@ public class GWTEntryPoint implements EntryPoint {
 			}
 		}
 
-		InitializeApplication.initHome(uniqueID, company);
-		
+		final String interview = Location.getParameter("interview");
+		if (!"true".equals(interview)) {
+
+			RootPanel.get("main").add(new ProblemMatrixPanel());
+
+			InitializeApplication.initHome(uniqueID, company);
+
+		} else {
+
+			RootPanel.get("main").add(new CustomerPage());
+		}
+
 	}
 }
