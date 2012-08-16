@@ -54,7 +54,7 @@ public class GWTEntryPoint implements EntryPoint {
 		}
 
 		final String interview = Location.getParameter("interview");
-		if (!"true".equals(interview)) {
+		if (interview == null || "null".equals(interview)) {
 
 			RootPanel.get("main").add(new ProblemMatrixPanel());
 
@@ -62,7 +62,7 @@ public class GWTEntryPoint implements EntryPoint {
 
 		} else {
 
-			RootPanel.get("main").add(new CustomerPage());
+			RootPanel.get("main").add(new CustomerPage(interview));
 		}
 
 	}

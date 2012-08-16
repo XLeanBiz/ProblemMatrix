@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CustomerPage extends VerticalPanel {
 
-	public CustomerPage() {
+	public CustomerPage(final String problemName) {
 
 		this.setSpacing(20);
 
@@ -21,7 +21,7 @@ public class CustomerPage extends VerticalPanel {
 		table.setStyleName("flextable");
 		table.setWidget(0, 0, vp);
 
-		vp.add(new CustomerProblemInterview());
+		vp.add(new CustomerProblemInterview(problemName));
 
 		this.add(table);
 	}

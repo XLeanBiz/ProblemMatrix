@@ -23,9 +23,8 @@ public class SaveProblemInterview {
 
 		parameters += URLUtilities.addSaveParameterString(interview,
 				"interviewer");
-		
-		parameters += URLUtilities.addSaveParameterString(interview,
-				"persona");
+
+		parameters += URLUtilities.addSaveParameterString(interview, "persona");
 
 		parameters += URLUtilities
 				.addSaveParameterString(interview, "datetime");
@@ -54,7 +53,7 @@ public class SaveProblemInterview {
 
 		parameters += URLUtilities.addSaveParameterString(interview,
 				"problemRate");
-		
+
 		parameters += URLUtilities.addSaveParameterText(interview,
 				"make5Problem");
 
@@ -66,10 +65,10 @@ public class SaveProblemInterview {
 
 		parameters += URLUtilities.addSaveParameterText(interview,
 				"openComments");
-		
-		URLUtilities.fetchURLPost(saveUrl,
-				parameters + EncryptText.getAuthParameter());
 
-		return interview.toString();
+		String interviewID = URLUtilities.fetchURLPost(saveUrl, parameters
+				+ EncryptText.getAuthParameter());
+
+		return interviewID;
 	}
 }

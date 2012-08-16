@@ -29,18 +29,22 @@ public class ButtonSaveProblemInterview extends Button {
 
 	public static void prepareInterviewJson() {
 
+		String companyUniqueID = ConvertJson
+				.convertToString(UniqueIDGlobalVariables.companyUniqueID
+						.get("ID"));
+
+		ConvertJson.setStringValue(CustomerProblemInterview.interview,
+				companyUniqueID, "company");
+
 		ConvertJson.setStringValue(CustomerProblemInterview.interview,
 				Long.toString((new Date()).getTime()), "datetime");
 
-		String customerName = ConvertJson.getStringValue(
-				UniqueIDGlobalVariables.uniqueID, "entityName");
-		ConvertJson.setStringValue(CustomerProblemInterview.interview, customerName,
+		ConvertJson.setStringValue(CustomerProblemInterview.interview,
+				CustomerProblemInterview.customerNameField.getText(),
 				"customerName");
 
-		String customerID = ConvertJson.getStringValue(
-				UniqueIDGlobalVariables.uniqueID, "ID");
-		ConvertJson.setStringValue(CustomerProblemInterview.interview, customerID,
-				"customerUniqueID");
+		ConvertJson.setStringValue(CustomerProblemInterview.interview,
+				CustomerProblemInterview.problemNameField.getText(), "problem");
 
 		getInterviewQuesitons();
 
@@ -56,7 +60,8 @@ public class ButtonSaveProblemInterview extends Button {
 				CustomerProblemInterview.haveProblem.getHTML(), "haveProblem");
 
 		ConvertJson.setStringValue(CustomerProblemInterview.interview,
-				CustomerProblemInterview.whyHaveProblem.getHTML(), "whyHaveProblem");
+				CustomerProblemInterview.whyHaveProblem.getHTML(),
+				"whyHaveProblem");
 
 		ConvertJson.setStringValue(CustomerProblemInterview.interview,
 				CustomerProblemInterview.problemRateField
@@ -68,10 +73,18 @@ public class ButtonSaveProblemInterview extends Button {
 				"howSolvingProblem");
 
 		ConvertJson.setStringValue(CustomerProblemInterview.interview,
-				CustomerProblemInterview.make5Problem.getHTML(), "make5Problem");
+				CustomerProblemInterview.howLikeSolvingProblem.getHTML(),
+				"howLikeSolvingProblem");
 
-		ConvertJson.setStringValue(CustomerProblemInterview.interview,
-				CustomerProblemInterview.openComments.getHTML(), "openComments");
+		ConvertJson
+				.setStringValue(CustomerProblemInterview.interview,
+						CustomerProblemInterview.make5Problem.getHTML(),
+						"make5Problem");
+
+		ConvertJson
+				.setStringValue(CustomerProblemInterview.interview,
+						CustomerProblemInterview.openComments.getHTML(),
+						"openComments");
 	}
 
 }
