@@ -15,6 +15,8 @@ import com.google.gwt.user.datepicker.client.DateBox;
 
 public class EditProblemInterview extends VerticalPanel {
 
+	public static TextBox interviewerField = new TextBox();
+
 	public static TextBox personaField = new TextBox();
 
 	public static DateBox dateTime = new DateBox();
@@ -57,7 +59,8 @@ public class EditProblemInterview extends VerticalPanel {
 			ConvertJson.setStringValue(interview, interviewerUniqueID,
 					"interviewer");
 		}
-		this.add(FormField.getStringField("Interviewer", interviewerUniqueID));
+		interviewerField.setValue(interviewerUniqueID);
+		this.add(FormField.getFormField("Interviewer", interviewerField));
 
 		String persona = ConvertJson.convertToString(interview.get("persona"));
 		personaField.setValue(persona);
