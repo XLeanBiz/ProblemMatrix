@@ -1,7 +1,9 @@
 package co.problemmatrix.client.home;
 
+import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.companies.CompanyIcon;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginPanel;
+import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -17,7 +19,16 @@ public class Header extends HorizontalPanel {
 		VerticalPanel vp = new VerticalPanel();
 		vp.setSpacing(10);
 
-		HTML title = new HTML("<h1>Problem Matrix</h1>");
+		String companyString = "";
+		String companyID = ConvertJson.getStringValue(
+				UniqueIDGlobalVariables.companyUniqueID, "ID");
+		if (companyID != null) {
+
+			companyString = "?company=" + companyID;
+		}
+
+		HTML title = new HTML("<a href='http://problemmatrix.com"
+				+ companyString + "'><h1><font color=black>Problem Matrix</font></h1></a>");
 		vp.add(title);
 
 		HTML subtitle = new HTML(
