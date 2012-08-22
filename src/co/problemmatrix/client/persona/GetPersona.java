@@ -3,6 +3,7 @@ package co.problemmatrix.client.persona;
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONObject;
@@ -11,12 +12,12 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class GetPersona {
 
-	public static void get(final String name) {
+	public static void get(final String persona) {
 
 		final StartupDataServiceAsync custDevService = GWT
 				.create(StartupDataService.class);
 
-		custDevService.getPersona(name, new AsyncCallback<String>() {
+		custDevService.getPersona(persona, new AsyncCallback<String>() {
 
 			public void onFailure(final Throwable caught) {
 				System.out.println(caught);
@@ -24,13 +25,33 @@ public class GetPersona {
 
 			public void onSuccess(final String jsonResult) {
 
+				ProblemMatrixPanel.vpButtons.clear();
+				ProblemMatrixPanel.vpMain.clear();
+
 				if (jsonResult != null && !jsonResult.equals("")) {
 
-					JSONObject persona = (JSONObject) JSONParser
+					JSONObject personaJson = (JSONObject) JSONParser
 							.parseStrict(jsonResult);
 
-					ProblemMatrixPanel.vpMain.clear();
-					ProblemMatrixPanel.vpMain.add(new ShowPersona(persona));
+					String personaID = ConvertJson.convertToString(personaJson
+							.get("ID"));
+
+					ProblemMatrixPanel.vpButtons.add(new ButtonEditPersona(
+							personaJson));
+
+					if (personaID != null) {
+
+						ProblemMatrixPanel.vpMain.add(new ShowPersona(
+								personaJson));
+
+					} else {
+
+						ConvertJson.setStringValue(personaJson, persona, "ID");
+
+						ProblemMatrixPanel.vpMain.add(new EditPersona(
+								personaJson));
+					}
+
 				}
 			}
 		});

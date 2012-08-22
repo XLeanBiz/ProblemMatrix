@@ -1,7 +1,5 @@
 package co.problemmatrix.client.home;
 
-import co.problemmatrix.client.interviews.edit.AddInterviewButton;
-
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -9,6 +7,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class ProblemMatrixPanel extends VerticalPanel {
 
 	public static VerticalPanel vpMain = new VerticalPanel();
+
+	public static VerticalPanel vpButtons = new VerticalPanel();
 
 	public ProblemMatrixPanel() {
 
@@ -18,7 +18,7 @@ public class ProblemMatrixPanel extends VerticalPanel {
 		this.add(new Header());
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-		this.add(new AddInterviewButton());
+		this.add(vpButtons);
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
 		vpMain.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);

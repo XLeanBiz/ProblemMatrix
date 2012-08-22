@@ -39,13 +39,13 @@ public class EditPersona extends VerticalPanel {
 		String personaName = ConvertJson.convertToString(personaJson.get("ID"));
 		customerSegment.setValue(personaName);
 		this.add(FormField.getFormField(
-				"<font color=red>*</font> Persona Type", customerSegment));
+				"<font color=red>*</font> Persona", customerSegment));
 		customerSegment.setWidth("500px");
 		
 		String nickName = ConvertJson.convertToString(personaJson.get("name"));
 		name.setValue(nickName);
 		this.add(FormField.getFormField(
-				"Persona Name", name));
+				"Nickname", name));
 		name.setWidth("500px");
 
 		String imageURLValue = ConvertJson.convertToString(personaJson

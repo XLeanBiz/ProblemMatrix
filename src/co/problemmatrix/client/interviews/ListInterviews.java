@@ -3,6 +3,7 @@ package co.problemmatrix.client.interviews;
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.interviews.edit.AddInterviewButton;
 import co.problemmatrix.client.matrix.CompanyProblemMatrix;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
@@ -42,6 +43,10 @@ public class ListInterviews {
 								ProblemMatrixPanel.vpMain.clear();
 								ProblemMatrixPanel.vpMain
 										.add(new CompanyProblemMatrix(jsonArray));
+
+								ProblemMatrixPanel.vpButtons.clear();
+								ProblemMatrixPanel.vpButtons
+										.add(new AddInterviewButton());
 							}
 						}
 					});

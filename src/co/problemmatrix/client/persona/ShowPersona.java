@@ -15,21 +15,9 @@ public class ShowPersona extends VerticalPanel {
 
 	public ShowPersona(JSONObject personaJson) {
 
-		String personaName = ConvertJson.convertToString(personaJson.get("ID"));
-
 		this.setSpacing(20);
 
-		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-
-		HorizontalPanel hpButtons = new HorizontalPanel();
-		hpButtons.setSpacing(5);
-
-		hpButtons.add(new ButtonEditPersona(personaJson));
-
-		this.add(hpButtons);
-
-		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
-
+		String personaName = ConvertJson.convertToString(personaJson.get("ID"));
 		if (personaName != null) {
 
 			HTML name = new HTML("<font color=blue size=4><b>"
@@ -119,7 +107,6 @@ public class ShowPersona extends VerticalPanel {
 		vpProblems.add(new HTML("<blockquote>" + problemsValue
 				+ "</blockquote>"));
 		table.setWidget(2, 4, vpProblems);
-
 
 		hp.add(table);
 		this.add(hp);
