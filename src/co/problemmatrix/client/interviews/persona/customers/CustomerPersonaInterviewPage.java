@@ -1,27 +1,25 @@
-package co.problemmatrix.client.interviews.customers;
+package co.problemmatrix.client.interviews.persona.customers;
 
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class CustomerPage extends VerticalPanel {
+public class CustomerPersonaInterviewPage extends VerticalPanel {
 
-	public CustomerPage(final String problemName) {
+	public CustomerPersonaInterviewPage(final String personaID) {
 
-		this.setSpacing(20);
-
-		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
+		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		this.setWidth("100%");
 
 		VerticalPanel vp = new VerticalPanel();
 
 		FlexTable table = new FlexTable();
-		table.setSize("100%", "100%");
 		table.setCellPadding(0);
 		table.setCellSpacing(0);
 		table.setStyleName("flextable");
 		table.setWidget(0, 0, vp);
 
-		vp.add(new CustomerProblemInterview(problemName));
+		vp.add(new CustomerPersonaInterview(personaID));
 
 		this.add(table);
 	}

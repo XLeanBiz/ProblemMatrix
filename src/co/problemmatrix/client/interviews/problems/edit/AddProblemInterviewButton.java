@@ -1,4 +1,4 @@
-package co.problemmatrix.client.interviews.edit;
+package co.problemmatrix.client.interviews.problems.edit;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.utilities.UseTracking;
@@ -8,9 +8,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.Button;
 
-public class AddInterviewButton extends Button {
+public class AddProblemInterviewButton extends Button {
 
-	public AddInterviewButton() {
+	public AddProblemInterviewButton() {
 
 		this.setText("ADD INTERVIEW");
 

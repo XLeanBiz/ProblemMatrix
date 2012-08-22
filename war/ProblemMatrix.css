@@ -22,7 +22,6 @@ p {
 }
 
 .flextable {
-  width: 100%;
   height: 410px;
   position: relative;
   border: 1px solid #ccc;

@@ -1,4 +1,4 @@
-package co.problemmatrix.client.interviews.customers;
+package co.problemmatrix.client.interviews.persona.customers;
 
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
@@ -7,15 +7,15 @@ import co.uniqueid.authentication.client.utilities.ConvertJson;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class SaveProblemInterviewField {
+public class SavePersonaInterviewField {
 
 	public static void save() {
 
 		final StartupDataServiceAsync custDevService = GWT
 				.create(StartupDataService.class);
 
-		custDevService.saveProblemInterview(
-				CustomerProblemInterview.interview.toString(),
+		custDevService.savePersonaInterview(
+				CustomerPersonaInterview.interview.toString(),
 				new AsyncCallback<String>() {
 
 					public void onFailure(final Throwable caught) {
@@ -25,7 +25,7 @@ public class SaveProblemInterviewField {
 					public void onSuccess(String unoUserJson) {
 
 						String interviewID = ConvertJson
-								.convertToString(CustomerProblemInterview.interview
+								.convertToString(CustomerPersonaInterview.interview
 										.get("ID"));
 
 						if (interviewID == null) {
@@ -33,8 +33,8 @@ public class SaveProblemInterviewField {
 							interviewID = unoUserJson;
 
 							ConvertJson.setStringValue(
-									CustomerProblemInterview.interview, interviewID,
-									"ID");
+									CustomerPersonaInterview.interview,
+									interviewID, "ID");
 						}
 
 					}

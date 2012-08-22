@@ -1,8 +1,5 @@
 package co.problemmatrix.client;
 
-import co.problemmatrix.client.home.ProblemMatrixPanel;
-import co.problemmatrix.client.interviews.customers.CustomerPage;
-import co.problemmatrix.client.persona.GetPersona;
 import co.problemmatrix.client.utilities.UseTracking;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.EncryptText;
@@ -54,22 +51,7 @@ public class GWTEntryPoint implements EntryPoint {
 			}
 		}
 
-		final String interview = Location.getParameter("interview");
-		final String persona = Location.getParameter("persona");
+		InitializeApplication.verifyParameters(uniqueID, company);
 
-		if (!(interview == null || "null".equals(interview))) {
-
-			RootPanel.get("main").add(new CustomerPage(interview));
-
-		} else if (persona != null) {
-			 
-			RootPanel.get("main").add(new ProblemMatrixPanel());
-			GetPersona.get(persona);
-
-		} else {
-
-			RootPanel.get("main").add(new ProblemMatrixPanel());
-			InitializeApplication.initHome(uniqueID, company);
-		}
 	}
 }

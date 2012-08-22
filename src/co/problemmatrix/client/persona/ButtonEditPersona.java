@@ -20,6 +20,10 @@ public class ButtonEditPersona extends Button {
 
 				ProblemMatrixPanel.vpMain.clear();
 				ProblemMatrixPanel.vpMain.add(new EditPersona(personaJson));
+				
+				ProblemMatrixPanel.hpButtons.clear();
+				ProblemMatrixPanel.hpButtons.add(new ButtonShowPersona(
+						personaJson));
 			}
 		});
 

@@ -1,6 +1,6 @@
-package co.problemmatrix.client.interviews.customers;
+package co.problemmatrix.client.interviews.problems.customers;
 
-import co.problemmatrix.client.interviews.edit.ProblemRateListbox;
+import co.problemmatrix.client.interviews.problems.edit.ProblemRateListbox;
 import co.problemmatrix.client.utilities.FormField;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 

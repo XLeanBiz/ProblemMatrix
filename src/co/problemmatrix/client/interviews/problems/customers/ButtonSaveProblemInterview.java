@@ -1,4 +1,4 @@
-package co.problemmatrix.client.interviews.customers;
+package co.problemmatrix.client.interviews.problems.customers;
 
 import java.util.Date;
 

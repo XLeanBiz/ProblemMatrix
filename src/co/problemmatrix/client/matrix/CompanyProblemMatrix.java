@@ -3,7 +3,7 @@ package co.problemmatrix.client.matrix;
 import java.util.ArrayList;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
-import co.problemmatrix.client.interviews.edit.EditProblemInterviewPage;
+import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
 import co.problemmatrix.client.persona.GetPersona;
 import co.problemmatrix.client.utilities.UseTracking;
 import co.uniqueid.authentication.client.utilities.ConvertJson;

@@ -1,7 +1,9 @@
 package co.problemmatrix.server;
 
 import co.problemmatrix.client.StartupDataService;
+import co.problemmatrix.server.interviews.ListPersonaInterviews;
 import co.problemmatrix.server.interviews.ListProblemInterviews;
+import co.problemmatrix.server.interviews.SavePersonaInterview;
 import co.problemmatrix.server.interviews.SaveProblemInterview;
 import co.problemmatrix.server.persona.GetPersona;
 import co.problemmatrix.server.persona.SavePersona;
@@ -58,4 +60,24 @@ public class StartupDataServiceImpl extends RemoteServiceServlet implements
 		return null;
 	}
 
+	public String listPersonaInterviews(final String persona) {
+
+		return ListPersonaInterviews.list(persona);
+	}
+	
+	public String savePersonaInterview(final String interview) {
+
+		JSONObject json;
+		try {
+			json = new JSONObject(interview);
+
+			return SavePersonaInterview.save(json);
+
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }

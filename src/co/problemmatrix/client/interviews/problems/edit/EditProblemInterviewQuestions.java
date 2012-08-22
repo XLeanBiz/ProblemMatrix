@@ -1,4 +1,4 @@
-package co.problemmatrix.client.interviews.edit;
+package co.problemmatrix.client.interviews.problems.edit;
 
 import co.problemmatrix.client.utilities.FormField;
 import co.uniqueid.authentication.client.utilities.ConvertJson;

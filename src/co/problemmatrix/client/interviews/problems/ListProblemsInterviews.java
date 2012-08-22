@@ -1,9 +1,9 @@
-package co.problemmatrix.client.interviews;
+package co.problemmatrix.client.interviews.problems;
 
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.home.ProblemMatrixPanel;
-import co.problemmatrix.client.interviews.edit.AddInterviewButton;
+import co.problemmatrix.client.interviews.problems.edit.AddProblemInterviewButton;
 import co.problemmatrix.client.matrix.CompanyProblemMatrix;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
@@ -13,7 +13,7 @@ import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class ListInterviews {
+public class ListProblemsInterviews {
 
 	public static void list() {
 
@@ -44,9 +44,9 @@ public class ListInterviews {
 								ProblemMatrixPanel.vpMain
 										.add(new CompanyProblemMatrix(jsonArray));
 
-								ProblemMatrixPanel.vpButtons.clear();
-								ProblemMatrixPanel.vpButtons
-										.add(new AddInterviewButton());
+								ProblemMatrixPanel.hpButtons.clear();
+								ProblemMatrixPanel.hpButtons
+										.add(new AddProblemInterviewButton());
 							}
 						}
 					});

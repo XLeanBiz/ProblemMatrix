@@ -1,12 +1,13 @@
-package co.problemmatrix.client.interviews.customers;
+package co.problemmatrix.client.interviews.problems.customers;
 
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
+import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class SaveProblemInterview {
+public class SaveProblemInterviewField {
 
 	public static void save() {
 
@@ -23,8 +24,19 @@ public class SaveProblemInterview {
 
 					public void onSuccess(String unoUserJson) {
 
-						// Home.vpMain.clear();
-						// Home.vpMain.add(new Home());
+						String interviewID = ConvertJson
+								.convertToString(CustomerProblemInterview.interview
+										.get("ID"));
+
+						if (interviewID == null) {
+
+							interviewID = unoUserJson;
+
+							ConvertJson.setStringValue(
+									CustomerProblemInterview.interview, interviewID,
+									"ID");
+						}
+
 					}
 				});
 

@@ -17,11 +17,11 @@ public class ShowPersona extends VerticalPanel {
 
 		this.setSpacing(20);
 
-		String personaName = ConvertJson.convertToString(personaJson.get("ID"));
-		if (personaName != null) {
+		String personaID = ConvertJson.convertToString(personaJson.get("ID"));
+		if (personaID != null) {
 
 			HTML name = new HTML("<font color=blue size=4><b>"
-					+ personaName.toUpperCase() + "</b></font>");
+					+ personaID.toUpperCase() + "</b></font>");
 			this.add(name);
 		}
 

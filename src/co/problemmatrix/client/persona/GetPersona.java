@@ -3,6 +3,7 @@ package co.problemmatrix.client.persona;
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.interviews.persona.ListPersonaInterviewButton;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.core.client.GWT;
@@ -25,7 +26,7 @@ public class GetPersona {
 
 			public void onSuccess(final String jsonResult) {
 
-				ProblemMatrixPanel.vpButtons.clear();
+				ProblemMatrixPanel.hpButtons.clear();
 				ProblemMatrixPanel.vpMain.clear();
 
 				if (jsonResult != null && !jsonResult.equals("")) {
@@ -36,19 +37,22 @@ public class GetPersona {
 					String personaID = ConvertJson.convertToString(personaJson
 							.get("ID"));
 
-					ProblemMatrixPanel.vpButtons.add(new ButtonEditPersona(
-							personaJson));
-
 					if (personaID != null) {
 
 						ProblemMatrixPanel.vpMain.add(new ShowPersona(
 								personaJson));
+						ProblemMatrixPanel.hpButtons.add(new ButtonEditPersona(
+								personaJson));
+						ProblemMatrixPanel.hpButtons
+								.add(new ListPersonaInterviewButton(persona));
 
 					} else {
 
 						ConvertJson.setStringValue(personaJson, persona, "ID");
 
 						ProblemMatrixPanel.vpMain.add(new EditPersona(
+								personaJson));
+						ProblemMatrixPanel.hpButtons.add(new ButtonShowPersona(
 								personaJson));
 					}
 
