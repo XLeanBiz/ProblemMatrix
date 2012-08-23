@@ -37,6 +37,9 @@ public class ButtonSaveProblemInterview extends Button {
 	public static void getInterviewInformation() {
 
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
+				EditProblemInterview.companyField.getValue(), "company");
+		
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterview.personaField.getValue(), "persona");
 
 		if (EditProblemInterview.dateTime.getValue() != null) {

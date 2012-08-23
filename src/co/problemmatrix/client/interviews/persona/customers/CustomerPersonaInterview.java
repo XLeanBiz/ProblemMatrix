@@ -1,58 +1,46 @@
 package co.problemmatrix.client.interviews.persona.customers;
 
+import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterview;
+import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
 import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewQuestions;
 import co.problemmatrix.client.interviews.problems.customers.ButtonSaveCustomerProblemInterview;
 import co.problemmatrix.client.utilities.FormField;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CustomerPersonaInterview extends VerticalPanel {
 
-	public static JSONObject interview = new JSONObject();
-
-	public static TextBox customerNameField = new TextBox();
-
 	public CustomerPersonaInterview(final String persona) {
+
+		EditPersonaInterviewPage.interview = new JSONObject();
 
 		this.setSpacing(20);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 
-		ConvertJson.setStringValue(CustomerPersonaInterview.interview, persona,
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview, persona,
 				"persona");
 
-		String customerName = ConvertJson.convertToString(interview
-				.get("customerName"));
-		customerNameField.setValue(customerName);
-		customerNameField.addClickHandler(getClickHandler());
-		this.add(FormField.getFormField("Interviewee", customerNameField));
-		customerNameField.setWidth("300px");
+		String customerName = ConvertJson
+				.convertToString(EditPersonaInterviewPage.interview
+						.get("customerName"));
+		EditPersonaInterview.customerNameField.setValue(customerName);
+		EditPersonaInterview.customerNameField
+				.addClickHandler(EditPersonaInterviewQuestions
+						.getClickHandler());
+		this.add(FormField.getFormField("Interviewee",
+				EditPersonaInterview.customerNameField));
+		EditPersonaInterview.customerNameField.setWidth("300px");
 
-		this.add(new EditPersonaInterviewQuestions(interview));
+		this.add(new EditPersonaInterviewQuestions(
+				EditPersonaInterviewPage.interview));
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
 		this.add(new ButtonSaveCustomerProblemInterview());
 	}
 
-	private ClickHandler getClickHandler() {
-
-		ClickHandler clickHandler = new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				ButtonSavePersonaInterview.prepareInterviewJson();
-				SavePersonaInterviewField.save();
-			}
-		};
-
-		return clickHandler;
-	}
 }

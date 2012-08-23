@@ -16,6 +16,17 @@ public class CustomerProblemInterview extends VerticalPanel {
 		this.setSpacing(20);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
+		
+		String company = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("company"));
+		EditProblemInterview.companyField.setValue(company);
+		EditProblemInterview.companyField
+				.addClickHandler(EditProblemInterviewQuestions
+						.getClickHandler());
+		this.add(FormField.getFormField("Interviewer's company",
+				EditProblemInterview.companyField));
+		EditProblemInterview.companyField.setWidth("300px");
 
 		String customerName = ConvertJson
 				.convertToString(EditProblemInterviewPage.interview

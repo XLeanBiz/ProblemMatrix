@@ -3,6 +3,7 @@ package co.problemmatrix.client.interviews.persona.customers;
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.interviews.persona.ListPersonaInterviews;
+import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.core.client.GWT;
@@ -16,7 +17,7 @@ public class SavePersonaInterview {
 				.create(StartupDataService.class);
 
 		custDevService.savePersonaInterview(
-				CustomerPersonaInterview.interview.toString(),
+				EditPersonaInterviewPage.interview.toString(),
 				new AsyncCallback<String>() {
 
 					public void onFailure(final Throwable caught) {
@@ -26,7 +27,7 @@ public class SavePersonaInterview {
 					public void onSuccess(String unoUserJson) {
 
 						String personaID = ConvertJson
-								.convertToString(CustomerPersonaInterview.interview
+								.convertToString(EditPersonaInterviewPage.interview
 										.get("persona"));
 
 						ListPersonaInterviews.list(personaID);

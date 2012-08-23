@@ -14,6 +14,8 @@ import com.google.gwt.user.datepicker.client.DateBox;
 
 public class EditProblemInterview extends VerticalPanel {
 
+	public static TextBox companyField = new TextBox();
+
 	public static TextBox interviewerField = new TextBox();
 
 	public static TextBox personaField = new TextBox();
@@ -48,6 +50,10 @@ public class EditProblemInterview extends VerticalPanel {
 			ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 					companyUniqueID, "company");
 		}
+
+		companyField.setValue(companyUniqueID);
+		this.add(FormField.getFormField("<font color=red>*</font> Company",
+				companyField));
 
 		String interviewerUniqueID = ConvertJson
 				.convertToString(EditProblemInterviewPage.interview

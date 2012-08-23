@@ -7,7 +7,11 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class EditPersonaInterviewPage extends VerticalPanel {
 
-	public EditPersonaInterviewPage(JSONObject interview) {
+	public static JSONObject interview = new JSONObject();
+
+	public EditPersonaInterviewPage(JSONObject interviewParameter) {
+
+		interview = interviewParameter;
 
 		this.setSpacing(20);
 
@@ -18,11 +22,11 @@ public class EditPersonaInterviewPage extends VerticalPanel {
 		hp.add(new EditPersonaInterview(interview));
 
 		hp.add(new EditPersonaInterviewQuestions(interview));
-		
+
 		this.add(hp);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
-		this.add(new ButtonSavePersonaInterview(interview));
+		this.add(new ButtonSavePersonaInterview());
 	}
 }

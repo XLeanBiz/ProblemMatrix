@@ -1,4 +1,4 @@
-package co.problemmatrix.client.interviews.persona.customers;
+package co.problemmatrix.client.interviews.persona.edit;
 
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
@@ -15,7 +15,7 @@ public class SavePersonaInterviewField {
 				.create(StartupDataService.class);
 
 		custDevService.savePersonaInterview(
-				CustomerPersonaInterview.interview.toString(),
+				EditPersonaInterviewPage.interview.toString(),
 				new AsyncCallback<String>() {
 
 					public void onFailure(final Throwable caught) {
@@ -25,7 +25,7 @@ public class SavePersonaInterviewField {
 					public void onSuccess(String unoUserJson) {
 
 						String interviewID = ConvertJson
-								.convertToString(CustomerPersonaInterview.interview
+								.convertToString(EditPersonaInterviewPage.interview
 										.get("ID"));
 
 						if (interviewID == null) {
@@ -33,7 +33,7 @@ public class SavePersonaInterviewField {
 							interviewID = unoUserJson;
 
 							ConvertJson.setStringValue(
-									CustomerPersonaInterview.interview,
+									EditPersonaInterviewPage.interview,
 									interviewID, "ID");
 						}
 

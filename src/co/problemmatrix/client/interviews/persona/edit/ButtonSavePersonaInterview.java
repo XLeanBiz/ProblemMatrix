@@ -1,15 +1,15 @@
 package co.problemmatrix.client.interviews.persona.edit;
 
+import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.Button;
 
 public class ButtonSavePersonaInterview extends Button {
 
-	public ButtonSavePersonaInterview(final JSONObject interview) {
+	public ButtonSavePersonaInterview() {
 
 		this.setText("Save Interview");
 
@@ -18,63 +18,72 @@ public class ButtonSavePersonaInterview extends Button {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				ConvertJson.setStringValue(interview,
+				prepareInterviewJson();
+
+				getInterviewQuestions();
+
+				SavePersonaInterview.save(EditPersonaInterviewPage.interview);
+			}
+		});
+	}
+
+	public static void prepareInterviewJson() {
+
+		String companyUniqueID = ConvertJson
+				.convertToString(UniqueIDGlobalVariables.companyUniqueID
+						.get("ID"));
+
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				companyUniqueID, "company");
+
+		ConvertJson
+				.setStringValue(EditPersonaInterviewPage.interview,
 						EditPersonaInterview.interviewerField.getValue(),
 						"interviewer");
 
-				ConvertJson
-						.setStringValue(interview,
-								EditPersonaInterview.personaField.getValue(),
-								"persona");
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				EditPersonaInterview.personaField.getValue(), "persona");
 
-				ConvertJson.setStringValue(interview, Long
-						.toString(EditPersonaInterview.dateTime.getValue()
-								.getTime()), "datetime");
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview, Long
+				.toString(EditPersonaInterview.dateTime.getValue().getTime()),
+				"datetime");
 
-				ConvertJson.setStringValue(interview,
-						EditPersonaInterview.customerNameField.getValue(),
-						"customerName");
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				EditPersonaInterview.customerNameField.getValue(),
+				"customerName");
 
-				ConvertJson.setStringValue(interview,
-						EditPersonaInterview.customerUniqueIDField.getValue(),
-						"customerUniqueID");
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				EditPersonaInterview.customerUniqueIDField.getValue(),
+				"customerUniqueID");
 
-				ConvertJson.setStringValue(interview,
-						EditPersonaInterview.videoURLField.getValue(),
-						"videoURL");
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				EditPersonaInterview.videoURLField.getValue(), "videoURL");
 
-				ConvertJson.setStringValue(interview,
-						EditPersonaInterview.notes.getHTML(), "notes");
-
-				getInterviewQuesitons(interview);
-
-				SavePersonaInterview.save(interview);
-			}
-		});
-
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				EditPersonaInterview.notes.getHTML(), "notes");
 	}
 
-	private void getInterviewQuesitons(JSONObject interview) {
+	public static void getInterviewQuestions() {
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterviewQuestions.describeYourself.getHTML(),
 				"describeYourself");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterviewQuestions.routine.getHTML(), "routine");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterviewQuestions.goals.getHTML(), "goals");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterviewQuestions.mainProblems.getHTML(),
 				"mainProblems");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterviewQuestions.findOthers.getHTML(),
 				"findOthers");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterviewQuestions.openComments.getHTML(),
 				"openComments");
 	}

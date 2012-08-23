@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
-import co.problemmatrix.client.persona.GetPersona;
 import co.problemmatrix.client.utilities.UseTracking;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
@@ -56,13 +55,13 @@ public class CompanyProblemMatrix extends FlexTable {
 
 	private void writePersonaLink(FlexTable problemTable) {
 
-		HTML personaTitle = new HTML("<a href=#><b>PERSONA</b></a>");
+		HTML personaTitle = new HTML("<b><font color=gray>PERSONA x PROBLEM</font></b>");
 		personaTitle.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 
 				new UseTracking(this.getClass().getName());
 
-				GetPersona.get("Event Organizer");
+				// GetPersona.get("Event Organizer");
 			}
 		});
 
@@ -90,7 +89,9 @@ public class CompanyProblemMatrix extends FlexTable {
 
 			personaList.add(targetPersona);
 
-			problemTable.setHTML(personaRow, 0, "<b>" + targetPersona + "</b>");
+			PersonaLink personaLink = new PersonaLink(targetPersona);
+
+			problemTable.setWidget(personaRow, 0, personaLink);
 		}
 
 		return personaRow;

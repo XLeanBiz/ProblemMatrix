@@ -1,6 +1,7 @@
 package co.problemmatrix.client.interviews.problems.customers;
 
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
+import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.json.client.JSONObject;
@@ -13,6 +14,16 @@ public class CustomerProblemInterviewPage extends VerticalPanel {
 	public CustomerProblemInterviewPage(final String problemName) {
 
 		EditProblemInterviewPage.interview = new JSONObject();
+
+		if (UniqueIDGlobalVariables.companyUniqueID != null) {
+
+			String companyUniqueID = ConvertJson
+					.convertToString(UniqueIDGlobalVariables.companyUniqueID
+							.get("ID"));
+
+			ConvertJson.setStringValue(EditProblemInterviewPage.interview,
+					companyUniqueID, "company");
+		}
 
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				problemName, "problem");

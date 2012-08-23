@@ -5,7 +5,6 @@ import java.util.Date;
 import co.problemmatrix.client.interviews.problems.edit.ButtonSaveProblemInterview;
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterview;
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
-import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -32,15 +31,8 @@ public class ButtonSaveCustomerProblemInterview extends Button {
 
 	public static void prepareInterviewJson() {
 
-		String companyUniqueID = "";
-		if (UniqueIDGlobalVariables.companyUniqueID != null) {
-
-			companyUniqueID = ConvertJson
-					.convertToString(UniqueIDGlobalVariables.companyUniqueID
-							.get("ID"));
-		}
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
-				companyUniqueID, "company");
+				EditProblemInterview.companyField.getText(), "company");
 
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				Long.toString((new Date()).getTime()), "datetime");
