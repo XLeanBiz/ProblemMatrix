@@ -4,12 +4,11 @@ import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.Button;
 
 public class ButtonSaveProblemInterview extends Button {
 
-	public ButtonSaveProblemInterview(final JSONObject interview) {
+	public ButtonSaveProblemInterview() {
 
 		this.setText("Save Interview");
 
@@ -18,85 +17,88 @@ public class ButtonSaveProblemInterview extends Button {
 			@Override
 			public void onClick(ClickEvent event) {
 
-			//	if (UniqueIDGlobalVariables.uniqueID != null) {
+				// if (UniqueIDGlobalVariables.uniqueID != null) {
 
-					getInterviewInformation(interview);
+				getInterviewInformation();
 
-					getInterviewQuesitons(interview);
+				getInterviewQuestions();
 
-					SaveProblemInterview.save(interview);
+				SaveProblemInterview.save(EditProblemInterviewPage.interview);
 
-			//	} else {
+				// } else {
 
-			//		Window.alert("Please login.");
-			//	}
+				// Window.alert("Please login.");
+				// }
 			}
 		});
 
 	}
 
-	private void getInterviewInformation(JSONObject interview) {
+	public static void getInterviewInformation() {
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterview.personaField.getValue(), "persona");
 
-		ConvertJson.setStringValue(interview, Long
-				.toString(EditProblemInterview.dateTime.getValue().getTime()),
-				"datetime");
+		if (EditProblemInterview.dateTime.getValue() != null) {
 
-		ConvertJson.setStringValue(interview,
+			ConvertJson.setStringValue(EditProblemInterviewPage.interview, Long
+					.toString(EditProblemInterview.dateTime.getValue()
+							.getTime()), "datetime");
+		}
+
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterview.customerNameField.getValue(),
 				"customerName");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterview.customerUniqueIDField.getValue(),
 				"customerUniqueID");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterview.videoURLField.getValue(), "videoURL");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterview.notes.getHTML(), "notes");
 	}
 
-	private void getInterviewQuesitons(JSONObject interview) {
+	public static void getInterviewQuestions() {
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.problemField.getValue(),
 				"problem");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.problemUnderstand.getHTML(),
 				"problemUnderstand");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.haveProblem.getHTML(),
 				"haveProblem");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.whyHaveProblem.getHTML(),
 				"whyHaveProblem");
 
 		ConvertJson
 				.setStringValue(
-						interview,
+						EditProblemInterviewPage.interview,
 						EditProblemInterviewQuestions.problemRateField
 								.getValue(EditProblemInterviewQuestions.problemRateField
 										.getSelectedIndex()), "problemRate");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.make5Problem.getHTML(),
 				"make5Problem");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.howSolvingProblem.getHTML(),
 				"howSolvingProblem");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.howLikeSolvingProblem.getHTML(),
 				"howLikeSolvingProblem");
 
-		ConvertJson.setStringValue(interview,
+		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.openComments.getHTML(),
 				"openComments");
 	}

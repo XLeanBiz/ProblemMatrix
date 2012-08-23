@@ -2,6 +2,7 @@ package co.problemmatrix.client.interviews.problems.edit;
 
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
+import co.problemmatrix.client.interviews.problems.ListProblemsInterviews;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONObject;
@@ -23,7 +24,7 @@ public class SaveProblemInterview {
 
 					public void onSuccess(String unoUserJson) {
 
-						
+						ListProblemsInterviews.list();
 					}
 				});
 

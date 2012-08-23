@@ -5,7 +5,7 @@ import co.problemmatrix.client.interviews.persona.customers.CustomerPersonaInter
 import co.problemmatrix.client.interviews.problems.ListProblemsInterviews;
 import co.problemmatrix.client.interviews.problems.customers.CustomerProblemInterviewPage;
 import co.problemmatrix.client.interviews.problems.edit.AddProblemInterviewButton;
-import co.problemmatrix.client.matrix.ProblemMatrixTable;
+import co.problemmatrix.client.matrix.ProblemMatrixGeneric;
 import co.problemmatrix.client.persona.GetPersona;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginVerifyer;
 import co.uniqueid.authentication.client.login.facebook.InitializeFacebookLogin;
@@ -65,7 +65,7 @@ public class InitializeApplication {
 
 		} else {
 
-			ProblemMatrixPanel.vpMain.add(new ProblemMatrixTable());
+			ProblemMatrixPanel.vpMain.add(new ProblemMatrixGeneric());
 			ProblemMatrixPanel.hpButtons.add(new AddProblemInterviewButton());
 		}
 	}

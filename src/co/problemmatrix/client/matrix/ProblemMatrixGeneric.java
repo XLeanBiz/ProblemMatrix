@@ -3,9 +3,9 @@ package co.problemmatrix.client.matrix;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 
-public class ProblemMatrixTable extends FlexTable {
+public class ProblemMatrixGeneric extends FlexTable {
 
-	public ProblemMatrixTable() {
+	public ProblemMatrixGeneric() {
 
 		setSize("100%", "100%");
 		setBorderWidth(1);

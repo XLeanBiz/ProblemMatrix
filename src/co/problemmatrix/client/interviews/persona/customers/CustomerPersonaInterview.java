@@ -1,7 +1,7 @@
 package co.problemmatrix.client.interviews.persona.customers;
 
 import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewQuestions;
-import co.problemmatrix.client.interviews.problems.customers.ButtonSaveProblemInterview;
+import co.problemmatrix.client.interviews.problems.customers.ButtonSaveCustomerProblemInterview;
 import co.problemmatrix.client.utilities.FormField;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
@@ -38,7 +38,7 @@ public class CustomerPersonaInterview extends VerticalPanel {
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
-		this.add(new ButtonSaveProblemInterview());
+		this.add(new ButtonSaveCustomerProblemInterview());
 	}
 
 	private ClickHandler getClickHandler() {

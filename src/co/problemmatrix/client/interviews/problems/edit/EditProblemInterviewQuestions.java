@@ -3,7 +3,8 @@ package co.problemmatrix.client.interviews.problems.edit;
 import co.problemmatrix.client.utilities.FormField;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
-import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.TextBox;
@@ -29,70 +30,97 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 
 	public static RichTextArea openComments = new RichTextArea();
 
-	public EditProblemInterviewQuestions(JSONObject interview) {
+	public EditProblemInterviewQuestions() {
 
 		this.setSpacing(20);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 
-		String problem = ConvertJson.convertToString(interview.get("problem"));
+		String problem = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("problem"));
 		problemField.setValue(problem);
+		problemField.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
 				"<font color=red>*</font> Problem", problemField));
 		problemField.setWidth("500px");
 
-		String problemUnderstandValue = ConvertJson.getStringValue(interview,
-				"problemUnderstand");
+		String problemUnderstandValue = ConvertJson.getStringValue(
+				EditProblemInterviewPage.interview, "problemUnderstand");
 		problemUnderstand.setHTML(problemUnderstandValue);
+		problemUnderstand.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
-				"What do you understand from this problem?", problemUnderstand));
+				"What do you <b>understand</b> from this problem?", problemUnderstand));
 		problemUnderstand.setSize("500px", "80px");
 
-		String haveProblemValue = ConvertJson.getStringValue(interview,
-				"haveProblem");
+		String haveProblemValue = ConvertJson.getStringValue(
+				EditProblemInterviewPage.interview, "haveProblem");
 		haveProblem.setHTML(haveProblemValue);
-		this.add(FormField.getVerticalFormField("Do you have this problem?",
+		haveProblem.addClickHandler(getClickHandler());
+		this.add(FormField.getVerticalFormField("Do you <b>have</b> this problem?",
 				haveProblem));
 		haveProblem.setSize("500px", "80px");
 
-		String whyHaveProblemValue = ConvertJson.getStringValue(interview,
-				"whyHaveProblem");
+		String whyHaveProblemValue = ConvertJson.getStringValue(
+				EditProblemInterviewPage.interview, "whyHaveProblem");
 		whyHaveProblem.setHTML(whyHaveProblemValue);
+		whyHaveProblem.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField("Why?", whyHaveProblem));
 		whyHaveProblem.setSize("500px", "80px");
 
-		String problemRate = ConvertJson.getStringValue(interview,
-				"problemRate");
+		String problemRate = ConvertJson.getStringValue(
+				EditProblemInterviewPage.interview, "problemRate");
 		problemRateField = new ProblemRateListbox(problemRate);
+		problemRateField.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
 				"How do you rate this problem?", problemRateField));
 
-		String make5ProblemValue = ConvertJson.getStringValue(interview,
-				"make5Problem");
+		String make5ProblemValue = ConvertJson.getStringValue(
+				EditProblemInterviewPage.interview, "make5Problem");
 		make5Problem.setHTML(make5ProblemValue);
+		make5Problem.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
-				"What will make this problem a 5?", make5Problem));
+				"What will make this problem a MUST HAVE?", make5Problem));
 		make5Problem.setSize("500px", "80px");
 
-		String howSolvingProblemValue = ConvertJson.getStringValue(interview,
-				"howSolvingProblem");
+		String howSolvingProblemValue = ConvertJson.getStringValue(
+				EditProblemInterviewPage.interview, "howSolvingProblem");
 		howSolvingProblem.setHTML(howSolvingProblemValue);
+		howSolvingProblem.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
-				"How are you solving this problem today?", howSolvingProblem));
+				"How are you <b>solving</b> this problem today?", howSolvingProblem));
 		howSolvingProblem.setSize("500px", "80px");
 
 		String howLikeSolvingProblemValue = ConvertJson.getStringValue(
-				interview, "howLikeSolvingProblem");
+				EditProblemInterviewPage.interview, "howLikeSolvingProblem");
 		howLikeSolvingProblem.setHTML(howLikeSolvingProblemValue);
+		howLikeSolvingProblem.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
-				"How would you like this problem to be solved?",
+				"How would you <b>like</b> this problem to be <b>solved</b>?",
 				howLikeSolvingProblem));
 		howLikeSolvingProblem.setSize("500px", "80px");
 
-		String openCommentsValue = ConvertJson.getStringValue(interview,
-				"openComments");
+		String openCommentsValue = ConvertJson.getStringValue(
+				EditProblemInterviewPage.interview, "openComments");
 		openComments.setHTML(openCommentsValue);
+		openComments.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField("Comments?", openComments));
 		openComments.setSize("500px", "80px");
+	}
+
+	public static ClickHandler getClickHandler() {
+
+		ClickHandler clickHandler = new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				ButtonSaveProblemInterview.getInterviewInformation(); 
+				ButtonSaveProblemInterview.getInterviewQuestions();
+				SaveProblemInterviewField.save();
+			}
+		};
+
+		return clickHandler;
 	}
 }

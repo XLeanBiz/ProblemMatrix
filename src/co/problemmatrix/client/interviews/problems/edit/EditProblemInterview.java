@@ -6,7 +6,6 @@ import co.problemmatrix.client.utilities.FormField;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
-import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.TextBox;
@@ -29,14 +28,15 @@ public class EditProblemInterview extends VerticalPanel {
 
 	public static RichTextArea notes = new RichTextArea();
 
-	public EditProblemInterview(JSONObject interview) {
+	public EditProblemInterview() {
 
 		this.setSpacing(20);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 
-		String companyUniqueID = ConvertJson.convertToString(interview
-				.get("company"));
+		String companyUniqueID = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("company"));
 
 		if (companyUniqueID == null
 				&& UniqueIDGlobalVariables.companyUniqueID != null) {
@@ -45,29 +45,35 @@ public class EditProblemInterview extends VerticalPanel {
 					.convertToString(UniqueIDGlobalVariables.companyUniqueID
 							.get("ID"));
 
-			ConvertJson.setStringValue(interview, companyUniqueID, "company");
+			ConvertJson.setStringValue(EditProblemInterviewPage.interview,
+					companyUniqueID, "company");
 		}
 
-		String interviewerUniqueID = ConvertJson.convertToString(interview
-				.get("interviewer"));
+		String interviewerUniqueID = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("interviewer"));
 		if (interviewerUniqueID == null
 				&& UniqueIDGlobalVariables.uniqueID != null) {
 
 			interviewerUniqueID = ConvertJson
 					.convertToString(UniqueIDGlobalVariables.uniqueID.get("ID"));
 
-			ConvertJson.setStringValue(interview, interviewerUniqueID,
-					"interviewer");
+			ConvertJson.setStringValue(EditProblemInterviewPage.interview,
+					interviewerUniqueID, "interviewer");
 		}
 		interviewerField.setValue(interviewerUniqueID);
 		this.add(FormField.getFormField("Interviewer", interviewerField));
 
-		String persona = ConvertJson.convertToString(interview.get("persona"));
+		String persona = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("persona"));
 		personaField.setValue(persona);
 		this.add(FormField.getFormField("<font color=red>*</font> Persona",
 				personaField));
 
-		String date = ConvertJson.convertToString(interview.get("datetime"));
+		String date = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("datetime"));
 		if (date == null) {
 			dateTime.setValue(new Date());
 		} else {
@@ -77,27 +83,32 @@ public class EditProblemInterview extends VerticalPanel {
 		this.add(FormField.getFormField("<font color=red>*</font> Date",
 				dateTime));
 
-		String customerName = ConvertJson.convertToString(interview
-				.get("customerName"));
+		String customerName = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("customerName"));
 		customerNameField.setValue(customerName);
 		this.add(FormField.getFormField(
 				"<font color=red>*</font> Customer Name", customerNameField));
 
-		String customerUniqueID = ConvertJson.convertToString(interview
-				.get("customerUniqueID"));
+		String customerUniqueID = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("customerUniqueID"));
 		customerUniqueIDField.setValue(customerUniqueID);
 		this.add(FormField
 				.getFormField(
 						"Customer <a href='http://uniqueid.co' target='_blank'>UniqueID</a>",
 						customerUniqueIDField));
 
-		String videoURLValue = ConvertJson.convertToString(interview
-				.get("videoURL"));
+		String videoURLValue = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("videoURL"));
 		videoURLField.setValue(videoURLValue);
 		this.add(FormField.getFormField("Interview's Video URL", videoURLField));
 		videoURLField.setWidth("300px");
 
-		String notesValue = ConvertJson.convertToString(interview.get("notes"));
+		String notesValue = ConvertJson
+				.convertToString(EditProblemInterviewPage.interview
+						.get("notes"));
 		notes.setHTML(notesValue);
 		this.add(FormField.getFormField("Interview Notes", notes));
 		notes.setSize("300px", "100px");

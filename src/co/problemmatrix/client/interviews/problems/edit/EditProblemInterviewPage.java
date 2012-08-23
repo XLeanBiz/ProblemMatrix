@@ -6,8 +6,12 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class EditProblemInterviewPage extends VerticalPanel {
+	
+	public static JSONObject interview = new JSONObject();
 
-	public EditProblemInterviewPage(JSONObject interview) {
+	public EditProblemInterviewPage(final JSONObject interviewParameter) {
+		
+		interview = interviewParameter;
 		
 		this.setSpacing(20);
 
@@ -15,14 +19,14 @@ public class EditProblemInterviewPage extends VerticalPanel {
 
 		HorizontalPanel hp = new HorizontalPanel();
 
-		hp.add(new EditProblemInterview(interview));
+		hp.add(new EditProblemInterview());
 
-		hp.add(new EditProblemInterviewQuestions(interview));
+		hp.add(new EditProblemInterviewQuestions());
 
 		this.add(hp);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
-		this.add(new ButtonSaveProblemInterview(interview));
+		this.add(new ButtonSaveProblemInterview());
 	}
 }

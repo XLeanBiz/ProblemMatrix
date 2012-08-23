@@ -56,8 +56,7 @@ public class CompanyProblemMatrix extends FlexTable {
 
 	private void writePersonaLink(FlexTable problemTable) {
 
-		HTML personaTitle = new HTML(
-				"<a href=#><b>PERSONA</b></a>");
+		HTML personaTitle = new HTML("<a href=#><b>PERSONA</b></a>");
 		personaTitle.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 
@@ -155,8 +154,8 @@ public class CompanyProblemMatrix extends FlexTable {
 		String problemRate = ConvertJson.getStringValue(interviewJson,
 				"problemRate");
 
-		HTML customerLink = new HTML("<a href=#>" + customerName + " - "
-				+ problemRate + "</a>");
+		CustomerNameLink customerLink = new CustomerNameLink(customerName,
+				problemRate);
 		customerLink.addClickHandler(new ClickHandler() {
 
 			@Override
