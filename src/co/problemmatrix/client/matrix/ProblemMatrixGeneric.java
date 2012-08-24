@@ -13,23 +13,32 @@ public class ProblemMatrixGeneric extends FlexTable {
 		setCellSpacing(0);
 		setStyleName("flextable");
 
-		HTML persona = new HTML("<center><b>PERSONA</b></center>");
+		HTML persona = new HTML(
+				"<center><b><font color=gray>PERSONA x PROBLEM</font></b></center>");
 		setWidget(0, 0, persona);
 
 		HTML problem1 = new HTML(
-				"<center><b>Customer<br><font color=red>PROBLEM</font><br>1</b></center>");
+				"<center><b>" +
+				"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+				"<br><font color=red>PROBLEM</font><br>1</b></center>");
 		setWidget(0, 1, problem1);
 
 		HTML problem2 = new HTML(
-				"<center><b>Customer<br><font color=red>PROBLEM</font><br>2</b></center>");
+				"<center><b>" +
+				"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+				"<br><font color=red>PROBLEM</font><br>2</b></center>");
 		setWidget(0, 2, problem2);
 
 		HTML problem3 = new HTML(
-				"<center><b>Customer<br><font color=red>PROBLEM</font><br>3</b></center>");
+				"<center><b>" +
+				"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+				"<br><font color=red>PROBLEM</font><br>3</b></center>");
 		setWidget(0, 3, problem3);
 
 		HTML problem4 = new HTML(
-				"<center><b>Customer<br><font color=red>PROBLEM</font><br>4</b></center>");
+				"<center><b>" +
+				"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+				"<br><font color=red>PROBLEM</font><br>4</b></center>");
 		setWidget(0, 4, problem4);
 
 		HTML segment1 = new HTML(

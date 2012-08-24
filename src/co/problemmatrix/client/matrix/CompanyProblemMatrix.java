@@ -55,7 +55,8 @@ public class CompanyProblemMatrix extends FlexTable {
 
 	private void writePersonaLink(FlexTable problemTable) {
 
-		HTML personaTitle = new HTML("<b><font color=gray>PERSONA x PROBLEM</font></b>");
+		HTML personaTitle = new HTML(
+				"<center><b><font color=gray>PERSONA x PROBLEM</font></b></center>");
 		personaTitle.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 

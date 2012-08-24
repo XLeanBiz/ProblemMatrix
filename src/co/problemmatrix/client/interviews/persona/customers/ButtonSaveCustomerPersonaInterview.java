@@ -33,12 +33,15 @@ public class ButtonSaveCustomerPersonaInterview extends Button {
 
 	public static void prepareInterviewJson() {
 
-		String companyUniqueID = ConvertJson
-				.convertToString(UniqueIDGlobalVariables.companyUniqueID
-						.get("ID"));
+		if (UniqueIDGlobalVariables.companyUniqueID != null) {
 
-		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
-				companyUniqueID, "company");
+			String companyUniqueID = ConvertJson
+					.convertToString(UniqueIDGlobalVariables.companyUniqueID
+							.get("ID"));
+
+			ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+					companyUniqueID, "company");
+		}
 
 		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				Long.toString((new Date()).getTime()), "datetime");
@@ -46,7 +49,6 @@ public class ButtonSaveCustomerPersonaInterview extends Button {
 		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterview.customerNameField.getText(),
 				"customerName");
-
 	}
 
 }
