@@ -11,12 +11,12 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CustomerProblemInterview extends VerticalPanel {
 
-	public CustomerProblemInterview() {
+	public CustomerProblemInterview(final boolean shortInterview) {
 
 		this.setSpacing(20);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
-		
+
 		String company = ConvertJson
 				.convertToString(EditProblemInterviewPage.interview
 						.get("company"));
@@ -24,8 +24,8 @@ public class CustomerProblemInterview extends VerticalPanel {
 		EditProblemInterview.companyField
 				.addClickHandler(EditProblemInterviewQuestions
 						.getClickHandler());
-	//	this.add(FormField.getFormField("Interviewer's company",
-		//		EditProblemInterview.companyField));
+		// this.add(FormField.getFormField("Interviewer's company",
+		// EditProblemInterview.companyField));
 		EditProblemInterview.companyField.setWidth("300px");
 
 		String customerName = ConvertJson
@@ -39,7 +39,7 @@ public class CustomerProblemInterview extends VerticalPanel {
 				EditProblemInterview.customerNameField));
 		EditProblemInterview.customerNameField.setWidth("300px");
 
-		this.add(new EditProblemInterviewQuestions());
+		this.add(new EditProblemInterviewQuestions(shortInterview));
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 

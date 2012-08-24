@@ -23,7 +23,8 @@ public class EditPersonaInterviewQuestions extends VerticalPanel {
 
 	public static RichTextArea openComments = new RichTextArea();
 
-	public EditPersonaInterviewQuestions(JSONObject interview) {
+	public EditPersonaInterviewQuestions(JSONObject interview,
+			final boolean shortInterview) {
 
 		this.setSpacing(20);
 
@@ -42,17 +43,26 @@ public class EditPersonaInterviewQuestions extends VerticalPanel {
 		String routineValue = ConvertJson.convertToString(interview
 				.get("routine"));
 		routine.setHTML(routineValue);
-		routine.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField(
-				"How is <b>your routine</b> as " + personaName + "?", routine));
-		routine.setSize("500px", "80px");
+
+		if (!shortInterview) {
+
+			routine.addClickHandler(getClickHandler());
+			this.add(FormField.getVerticalFormField(
+					"How is <b>your routine</b> as " + personaName + "?",
+					routine));
+			routine.setSize("500px", "80px");
+		}
 
 		String goalsValue = ConvertJson.convertToString(interview.get("goals"));
 		goals.setHTML(goalsValue);
-		goals.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField(
-				"What are <b>your goals</b> as " + personaName + "?", goals));
-		goals.setSize("500px", "80px");
+
+		if (!shortInterview) {
+			goals.addClickHandler(getClickHandler());
+			this.add(FormField
+					.getVerticalFormField("What are <b>your goals</b> as "
+							+ personaName + "?", goals));
+			goals.setSize("500px", "80px");
+		}
 
 		String mainProblemsValue = ConvertJson.convertToString(interview
 				.get("mainProblems"));
@@ -66,10 +76,15 @@ public class EditPersonaInterviewQuestions extends VerticalPanel {
 		String findOthersValue = ConvertJson.convertToString(interview
 				.get("findOthers"));
 		findOthers.setHTML(findOthersValue);
-		findOthers.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField("How can I <b>find other</b> "
-				+ personaName + " like you?", findOthers));
-		findOthers.setSize("500px", "80px");
+
+		if (!shortInterview) {
+
+			findOthers.addClickHandler(getClickHandler());
+			this.add(FormField
+					.getVerticalFormField("How can I <b>find other</b> "
+							+ personaName + " like you?", findOthers));
+			findOthers.setSize("500px", "80px");
+		}
 
 		String openCommentsValue = ConvertJson.convertToString(interview
 				.get("openComments"));

@@ -24,6 +24,7 @@ public class GWTEntryPoint implements EntryPoint {
 		new UseTracking(this.getClass().getName());
 
 		RootPanel.get("main").clear();
+		RootPanel.get("main").setWidth("100%");
 
 		String uniqueID = EncryptText.decrypt(Cookies.getCookie("UniqueID"));
 		// uniqueID = "AllineWatkins_1332886062783";

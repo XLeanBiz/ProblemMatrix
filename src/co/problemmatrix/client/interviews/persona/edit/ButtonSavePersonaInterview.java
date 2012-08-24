@@ -1,5 +1,8 @@
 package co.problemmatrix.client.interviews.persona.edit;
 
+import java.util.Date;
+
+import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
@@ -52,6 +55,10 @@ public class ButtonSavePersonaInterview extends Button {
 			ConvertJson.setStringValue(EditPersonaInterviewPage.interview, Long
 					.toString(EditPersonaInterview.dateTime.getValue()
 							.getTime()), "datetime");
+		} else {
+			
+			ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+					Long.toString((new Date()).getTime()), "datetime");
 		}
 
 		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,

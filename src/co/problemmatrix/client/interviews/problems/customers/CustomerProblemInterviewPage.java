@@ -11,7 +11,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CustomerProblemInterviewPage extends VerticalPanel {
 
-	public CustomerProblemInterviewPage(final String problemName) {
+	public CustomerProblemInterviewPage(final String problemName,
+			final boolean shortInterview) {
 
 		EditProblemInterviewPage.interview = new JSONObject();
 
@@ -39,7 +40,7 @@ public class CustomerProblemInterviewPage extends VerticalPanel {
 		table.setStyleName("flextable");
 		table.setWidget(0, 0, vp);
 
-		vp.add(new CustomerProblemInterview());
+		vp.add(new CustomerProblemInterview(shortInterview));
 
 		this.add(table);
 	}

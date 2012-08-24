@@ -41,22 +41,23 @@ public class CompanyProblemMatrix extends FlexTable {
 				persona = "";
 			}
 
-			int personaRow = getPersonaRow(persona, personaList, this);
+			int personaColumn = getPersonaColumn(persona, personaList, this);
 
 			String problem = ConvertJson.convertToString(interviewJson
 					.get("problem"));
 
 			int problemRow = getProblemRow(problem, problemsList, this);
 
-			writeCustomerName(this, personaRow, problemRow, interviewJson);
+			writeCustomerName(this, problemRow, personaColumn, interviewJson);
 		}
 
 	}
 
 	private void writePersonaLink(FlexTable problemTable) {
 
-		HTML personaTitle = new HTML(
-				"<center><b><font color=gray>PERSONA x PROBLEM</font></b></center>");
+		HTML personaTitle = new HTML("<center><b><font color=gray>"
+				+ "&nbsp;&nbsp; PROBLEM x PERSONA &nbsp;&nbsp;"
+				+ "</font></b></center>");
 		personaTitle.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 
@@ -69,10 +70,10 @@ public class CompanyProblemMatrix extends FlexTable {
 		problemTable.setWidget(0, 0, personaTitle);
 	}
 
-	private int getPersonaRow(String targetPersona,
+	private int getPersonaColumn(String targetPersona,
 			ArrayList<String> personaList, FlexTable problemTable) {
 
-		int personaRow = personaList.size() + 1;
+		int personaColumn = personaList.size() + 1;
 
 		for (int j = 0; j < personaList.size(); j++) {
 
@@ -80,22 +81,22 @@ public class CompanyProblemMatrix extends FlexTable {
 
 			if (persona.equals(targetPersona)) {
 
-				personaRow = j + 1;
+				personaColumn = j + 1;
 
 				break;
 			}
 		}
 
-		if (personaRow == personaList.size() + 1) {
+		if (personaColumn == personaList.size() + 1) {
 
 			personaList.add(targetPersona);
 
 			PersonaLink personaLink = new PersonaLink(targetPersona);
 
-			problemTable.setWidget(personaRow, 0, personaLink);
+			problemTable.setWidget(0, personaColumn, personaLink);
 		}
 
-		return personaRow;
+		return personaColumn;
 	}
 
 	private int getProblemRow(String targetProblem,
@@ -124,22 +125,22 @@ public class CompanyProblemMatrix extends FlexTable {
 
 			problemsList.add(targetProblem);
 
-			problemTable.setHTML(0, problemRow, "<b>" + targetProblem + "</b>");
+			problemTable.setHTML(problemRow, 0, "<b>" + targetProblem + "</b>");
 		}
 
 		return problemRow;
 	}
 
 	private void writeCustomerName(FlexTable problemTable,
-			final int customerRow, final int problemRow,
+			final int problemRow, final int personaColumn,
 			final JSONObject interviewJson) {
 
 		VerticalPanel customersList = new VerticalPanel();
 
 		try {
 
-			customersList = (VerticalPanel) problemTable.getWidget(customerRow,
-					problemRow);
+			customersList = (VerticalPanel) problemTable.getWidget(problemRow,
+					personaColumn);
 
 			if (customersList == null) {
 
@@ -171,6 +172,6 @@ public class CompanyProblemMatrix extends FlexTable {
 
 		customersList.add(customerLink);
 
-		problemTable.setWidget(customerRow, problemRow, customersList);
+		problemTable.setWidget(problemRow, personaColumn, customersList);
 	}
 }

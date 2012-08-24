@@ -35,8 +35,8 @@ public class CustomerNameLink extends HTML {
 
 		if (problemRate != null && problemRate.length() > 0) {
 
-			rateString = "<font color='" + rateColor + "'>(" + problemRate
-					+ ")</font>";
+			rateString = "<font color='" + rateColor + "' size=1>" + problemRate
+					+ "</font>";
 		}
 
 		this.setHTML("<a href=#>" + customerName + "</a> " + rateString);

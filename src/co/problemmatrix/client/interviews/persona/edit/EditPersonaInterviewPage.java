@@ -21,7 +21,7 @@ public class EditPersonaInterviewPage extends VerticalPanel {
 
 		hp.add(new EditPersonaInterview(interview));
 
-		hp.add(new EditPersonaInterviewQuestions(interview));
+		hp.add(new EditPersonaInterviewQuestions(interview, false));
 
 		this.add(hp);
 

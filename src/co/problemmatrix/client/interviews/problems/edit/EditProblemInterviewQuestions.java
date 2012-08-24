@@ -16,8 +16,6 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 
 	public static RichTextArea problemUnderstand = new RichTextArea();
 
-	public static RichTextArea haveProblem = new RichTextArea();
-
 	public static RichTextArea whyHaveProblem = new RichTextArea();
 
 	public static ProblemRateListbox problemRateField;
@@ -30,7 +28,7 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 
 	public static RichTextArea openComments = new RichTextArea();
 
-	public EditProblemInterviewQuestions() {
+	public EditProblemInterviewQuestions(final boolean shortInterview) {
 
 		this.setSpacing(20);
 
@@ -49,51 +47,52 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 				EditProblemInterviewPage.interview, "problemUnderstand");
 		problemUnderstand.setHTML(problemUnderstandValue);
 		problemUnderstand.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField(
-				"What does this problem <b>mean</b> to you?",
-				problemUnderstand));
+		this.add(FormField
+				.getVerticalFormField(
+						"What does this problem <b>mean</b> to you?",
+						problemUnderstand));
 		problemUnderstand.setSize("500px", "80px");
-
-		String haveProblemValue = ConvertJson.getStringValue(
-				EditProblemInterviewPage.interview, "haveProblem");
-		haveProblem.setHTML(haveProblemValue);
-		haveProblem.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField(
-				"Do you <b>have</b> this problem?", haveProblem));
-		haveProblem.setSize("500px", "80px");
-
-		String whyHaveProblemValue = ConvertJson.getStringValue(
-				EditProblemInterviewPage.interview, "whyHaveProblem");
-		whyHaveProblem.setHTML(whyHaveProblemValue);
-		whyHaveProblem.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField("Why?", whyHaveProblem));
-		whyHaveProblem.setSize("500px", "80px");
 
 		String problemRate = ConvertJson.getStringValue(
 				EditProblemInterviewPage.interview, "problemRate");
 		problemRateField = new ProblemRateListbox(problemRate);
 		problemRateField.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
-				"How do you rate this problem?", problemRateField));
+				"How do you <b>rate</b> this problem?", problemRateField));
+
+		String whyHaveProblemValue = ConvertJson.getStringValue(
+				EditProblemInterviewPage.interview, "whyHaveProblem");
+		whyHaveProblem.setHTML(whyHaveProblemValue);
+		whyHaveProblem.addClickHandler(getClickHandler());
+		this.add(FormField.getVerticalFormField("<b>Why</b>?", whyHaveProblem));
+		whyHaveProblem.setSize("500px", "80px");
 
 		String make5ProblemValue = ConvertJson.getStringValue(
 				EditProblemInterviewPage.interview, "make5Problem");
 		make5Problem.setHTML(make5ProblemValue);
-		make5Problem.addClickHandler(getClickHandler());
-		this.add(FormField
-				.getVerticalFormField(
-						"What will make this problem as you MUST HAVE a solution for it?",
-						make5Problem));
-		make5Problem.setSize("500px", "80px");
+
+		if (!shortInterview) {
+
+			make5Problem.addClickHandler(getClickHandler());
+			this.add(FormField
+					.getVerticalFormField(
+							"What will make this problem as you <b>MUST HAVE</b> a solution for it?",
+							make5Problem));
+			make5Problem.setSize("500px", "80px");
+		}
 
 		String howSolvingProblemValue = ConvertJson.getStringValue(
 				EditProblemInterviewPage.interview, "howSolvingProblem");
 		howSolvingProblem.setHTML(howSolvingProblemValue);
-		howSolvingProblem.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField(
-				"How are you <b>solving</b> this problem today?",
-				howSolvingProblem));
-		howSolvingProblem.setSize("500px", "80px");
+
+		if (!shortInterview) {
+
+			howSolvingProblem.addClickHandler(getClickHandler());
+			this.add(FormField.getVerticalFormField(
+					"How are you <b>solving</b> this problem today?",
+					howSolvingProblem));
+			howSolvingProblem.setSize("500px", "80px");
+		}
 
 		String howLikeSolvingProblemValue = ConvertJson.getStringValue(
 				EditProblemInterviewPage.interview, "howLikeSolvingProblem");

@@ -22,24 +22,43 @@ public class InitializeApplication {
 			final String companyID) {
 
 		final String problemInterview = Location
-				.getParameter("problemInterview");
-		
-		final String personaInterview = Location
-				.getParameter("personaInterview");
+				.getParameter("ProblemInterview");
 
-		final String persona = Location.getParameter("persona");
+		final String problemShortInterview = Location
+				.getParameter("ProblemShortInterview");
+
+		final String personaInterview = Location
+				.getParameter("PersonaInterview");
+
+		final String personaShortInterview = Location
+				.getParameter("PersonaShortInterview");
+
+		final String persona = Location.getParameter("Persona");
 
 		if (!(problemInterview == null || "null".equals(problemInterview))) {
 
 			RootPanel.get("main").add(
-					new CustomerProblemInterviewPage(problemInterview));
+					new CustomerProblemInterviewPage(problemInterview, false));
 
-		} else if(!(personaInterview == null || "null".equals(personaInterview))) {
+		} else if (!(problemShortInterview == null || "null"
+				.equals(problemShortInterview))) {
 
 			RootPanel.get("main").add(
-					new CustomerPersonaInterviewPage(personaInterview));
+					new CustomerProblemInterviewPage(problemShortInterview, true));
 
-		} else if(persona != null) {
+		} else if (!(personaInterview == null || "null"
+				.equals(personaInterview))) {
+
+			RootPanel.get("main").add(
+					new CustomerPersonaInterviewPage(personaInterview, false));
+
+		} else if (!(personaShortInterview == null || "null"
+				.equals(personaShortInterview))) {
+
+			RootPanel.get("main").add(
+					new CustomerPersonaInterviewPage(personaShortInterview, true));
+
+		} else if (persona != null) {
 
 			RootPanel.get("main").add(new ProblemMatrixPanel());
 			GetPersona.get(persona);

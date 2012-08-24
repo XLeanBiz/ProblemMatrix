@@ -1,5 +1,7 @@
 package co.problemmatrix.client.interviews.problems.edit;
 
+import java.util.Date;
+
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -51,6 +53,10 @@ public class ButtonSaveProblemInterview extends Button {
 			ConvertJson.setStringValue(EditProblemInterviewPage.interview, Long
 					.toString(EditProblemInterview.dateTime.getValue()
 							.getTime()), "datetime");
+		} else {
+			
+			ConvertJson.setStringValue(EditProblemInterviewPage.interview,
+					Long.toString((new Date()).getTime()), "datetime");
 		}
 
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
@@ -77,10 +83,6 @@ public class ButtonSaveProblemInterview extends Button {
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.problemUnderstand.getHTML(),
 				"problemUnderstand");
-
-		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
-				EditProblemInterviewQuestions.haveProblem.getHTML(),
-				"haveProblem");
 
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
 				EditProblemInterviewQuestions.whyHaveProblem.getHTML(),

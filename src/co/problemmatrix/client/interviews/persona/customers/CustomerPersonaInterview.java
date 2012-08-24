@@ -11,7 +11,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CustomerPersonaInterview extends VerticalPanel {
 
-	public CustomerPersonaInterview(final String persona) {
+	public CustomerPersonaInterview(final String persona,
+			final boolean shortInterview) {
 
 		this.setSpacing(20);
 
@@ -29,7 +30,7 @@ public class CustomerPersonaInterview extends VerticalPanel {
 		EditPersonaInterview.customerNameField.setWidth("300px");
 
 		this.add(new EditPersonaInterviewQuestions(
-				EditPersonaInterviewPage.interview));
+				EditPersonaInterviewPage.interview, shortInterview));
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 

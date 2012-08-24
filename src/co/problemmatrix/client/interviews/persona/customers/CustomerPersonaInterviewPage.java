@@ -11,7 +11,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CustomerPersonaInterviewPage extends VerticalPanel {
 
-	public CustomerPersonaInterviewPage(final String personaID) {
+	public CustomerPersonaInterviewPage(final String personaID,
+			final boolean shortInterview) {
 
 		EditPersonaInterviewPage.interview = new JSONObject();
 
@@ -30,7 +31,7 @@ public class CustomerPersonaInterviewPage extends VerticalPanel {
 		table.setStyleName("flextable");
 		table.setWidget(0, 0, vp);
 
-		vp.add(new CustomerPersonaInterview(personaID));
+		vp.add(new CustomerPersonaInterview(personaID, shortInterview));
 
 		this.add(table);
 	}
