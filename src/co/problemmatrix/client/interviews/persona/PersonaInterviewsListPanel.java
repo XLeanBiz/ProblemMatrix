@@ -33,8 +33,14 @@ public class PersonaInterviewsListPanel extends VerticalPanel {
 			final String personaID = ConvertJson.getStringValue(interviewJson,
 					"persona");
 
-			HTML html = new HTML(new Date(new Long(datetime))
-					+ " - <a href=#><b>" + " " + customerName + "</b></a>");
+			String dateString = "";
+			if (datetime != null) {
+
+				dateString = new Date(new Long(datetime)) + " - ";
+			}
+
+			HTML html = new HTML(dateString + "<a href=#><b>" + " "
+					+ customerName + "</b></a>");
 			html.addClickHandler(new ClickHandler() {
 
 				@Override

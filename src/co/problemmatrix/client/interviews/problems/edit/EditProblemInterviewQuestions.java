@@ -50,15 +50,16 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 		problemUnderstand.setHTML(problemUnderstandValue);
 		problemUnderstand.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
-				"What do you <b>understand</b> from this problem?", problemUnderstand));
+				"What does this problem <b>mean</b> to you?",
+				problemUnderstand));
 		problemUnderstand.setSize("500px", "80px");
 
 		String haveProblemValue = ConvertJson.getStringValue(
 				EditProblemInterviewPage.interview, "haveProblem");
 		haveProblem.setHTML(haveProblemValue);
 		haveProblem.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField("Do you <b>have</b> this problem?",
-				haveProblem));
+		this.add(FormField.getVerticalFormField(
+				"Do you <b>have</b> this problem?", haveProblem));
 		haveProblem.setSize("500px", "80px");
 
 		String whyHaveProblemValue = ConvertJson.getStringValue(
@@ -79,8 +80,10 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 				EditProblemInterviewPage.interview, "make5Problem");
 		make5Problem.setHTML(make5ProblemValue);
 		make5Problem.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField(
-				"What will make this problem a MUST HAVE?", make5Problem));
+		this.add(FormField
+				.getVerticalFormField(
+						"What will make this problem as you MUST HAVE a solution for it?",
+						make5Problem));
 		make5Problem.setSize("500px", "80px");
 
 		String howSolvingProblemValue = ConvertJson.getStringValue(
@@ -88,7 +91,8 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 		howSolvingProblem.setHTML(howSolvingProblemValue);
 		howSolvingProblem.addClickHandler(getClickHandler());
 		this.add(FormField.getVerticalFormField(
-				"How are you <b>solving</b> this problem today?", howSolvingProblem));
+				"How are you <b>solving</b> this problem today?",
+				howSolvingProblem));
 		howSolvingProblem.setSize("500px", "80px");
 
 		String howLikeSolvingProblemValue = ConvertJson.getStringValue(
@@ -115,7 +119,7 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				ButtonSaveProblemInterview.getInterviewInformation(); 
+				ButtonSaveProblemInterview.getInterviewInformation();
 				ButtonSaveProblemInterview.getInterviewQuestions();
 				SaveProblemInterviewField.save();
 			}

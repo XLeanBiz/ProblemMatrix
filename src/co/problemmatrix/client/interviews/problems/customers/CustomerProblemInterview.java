@@ -24,8 +24,8 @@ public class CustomerProblemInterview extends VerticalPanel {
 		EditProblemInterview.companyField
 				.addClickHandler(EditProblemInterviewQuestions
 						.getClickHandler());
-		this.add(FormField.getFormField("Interviewer's company",
-				EditProblemInterview.companyField));
+	//	this.add(FormField.getFormField("Interviewer's company",
+		//		EditProblemInterview.companyField));
 		EditProblemInterview.companyField.setWidth("300px");
 
 		String customerName = ConvertJson

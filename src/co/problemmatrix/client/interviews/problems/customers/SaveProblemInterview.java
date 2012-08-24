@@ -5,6 +5,7 @@ import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class SaveProblemInterview {
@@ -24,8 +25,7 @@ public class SaveProblemInterview {
 
 					public void onSuccess(String unoUserJson) {
 
-						// Home.vpMain.clear();
-						// Home.vpMain.add(new Home());
+						Window.alert("THANK YOU VERY MUCH FOR YOUR ANSWERS!");
 					}
 				});
 
