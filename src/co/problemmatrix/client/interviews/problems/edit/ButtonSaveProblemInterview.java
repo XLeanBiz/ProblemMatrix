@@ -96,7 +96,7 @@ public class ButtonSaveProblemInterview extends Button {
 										.getSelectedIndex()), "problemRate");
 
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,
-				EditProblemInterviewQuestions.make5Problem.getHTML(),
+				EditProblemInterviewQuestions.makeMustHaveProblem.getHTML(),
 				"make5Problem");
 
 		ConvertJson.setStringValue(EditProblemInterviewPage.interview,

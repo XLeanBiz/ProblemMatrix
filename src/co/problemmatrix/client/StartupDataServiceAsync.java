@@ -18,4 +18,9 @@ public interface StartupDataServiceAsync {
 	void listProblemInterviews(String company, AsyncCallback<String> callback);
 
 	void saveProblemInterview(String interview, AsyncCallback<String> callback);
+
+	void listSolutionInterviews(String solutionName,
+			AsyncCallback<String> callback);
+
+	void saveSolutionInterview(String interview, AsyncCallback<String> callback);
 }

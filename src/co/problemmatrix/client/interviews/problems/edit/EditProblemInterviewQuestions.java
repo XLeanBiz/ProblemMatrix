@@ -16,15 +16,15 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 
 	public static RichTextArea problemUnderstand = new RichTextArea();
 
-	public static RichTextArea whyHaveProblem = new RichTextArea();
-
 	public static ProblemRateListbox problemRateField;
+	
+	public static RichTextArea whyHaveProblem = new RichTextArea();
 
 	public static RichTextArea howSolvingProblem = new RichTextArea();
 
 	public static RichTextArea howLikeSolvingProblem = new RichTextArea();
 
-	public static RichTextArea make5Problem = new RichTextArea();
+	public static RichTextArea makeMustHaveProblem = new RichTextArea();
 
 	public static RichTextArea openComments = new RichTextArea();
 
@@ -69,16 +69,16 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 
 		String make5ProblemValue = ConvertJson.getStringValue(
 				EditProblemInterviewPage.interview, "make5Problem");
-		make5Problem.setHTML(make5ProblemValue);
+		makeMustHaveProblem.setHTML(make5ProblemValue);
 
 		if (!shortInterview) {
 
-			make5Problem.addClickHandler(getClickHandler());
+			makeMustHaveProblem.addClickHandler(getClickHandler());
 			this.add(FormField
 					.getVerticalFormField(
-							"What will make this problem as you <b>MUST HAVE</b> a solution for it?",
-							make5Problem));
-			make5Problem.setSize("500px", "80px");
+							"What will make this problem a <b>MUST HAVE</b> solution for you?",
+							makeMustHaveProblem));
+			makeMustHaveProblem.setSize("500px", "80px");
 		}
 
 		String howSolvingProblemValue = ConvertJson.getStringValue(

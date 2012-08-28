@@ -1,10 +1,13 @@
 package co.problemmatrix.server;
 
+
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.server.interviews.ListPersonaInterviews;
 import co.problemmatrix.server.interviews.ListProblemInterviews;
+import co.problemmatrix.server.interviews.ListSolutionInterviews;
 import co.problemmatrix.server.interviews.SavePersonaInterview;
 import co.problemmatrix.server.interviews.SaveProblemInterview;
+import co.problemmatrix.server.interviews.SaveSolutionInterview;
 import co.problemmatrix.server.persona.GetPersona;
 import co.problemmatrix.server.persona.SavePersona;
 
@@ -23,7 +26,7 @@ public class StartupDataServiceImpl extends RemoteServiceServlet implements
 
 		return ListProblemInterviews.list(company);
 	}
-	
+
 	public String saveProblemInterview(final String interview) {
 
 		JSONObject json;
@@ -39,7 +42,7 @@ public class StartupDataServiceImpl extends RemoteServiceServlet implements
 
 		return null;
 	}
-	
+
 	public String getPersona(final String personaName) {
 
 		return GetPersona.get(personaName);
@@ -64,7 +67,7 @@ public class StartupDataServiceImpl extends RemoteServiceServlet implements
 
 		return ListPersonaInterviews.list(persona);
 	}
-	
+
 	public String savePersonaInterview(final String interview) {
 
 		JSONObject json;
@@ -72,6 +75,27 @@ public class StartupDataServiceImpl extends RemoteServiceServlet implements
 			json = new JSONObject(interview);
 
 			return SavePersonaInterview.save(json);
+
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public String listSolutionInterviews(final String solutionName) {
+
+		return ListSolutionInterviews.list(solutionName);
+	}
+
+	public String saveSolutionInterview(final String interview) {
+
+		JSONObject json;
+		try {
+			json = new JSONObject(interview);
+
+			return SaveSolutionInterview.save(json);
 
 		} catch (JSONException e) {
 

@@ -5,6 +5,8 @@ import co.problemmatrix.client.interviews.persona.customers.CustomerPersonaInter
 import co.problemmatrix.client.interviews.problems.ListProblemsInterviews;
 import co.problemmatrix.client.interviews.problems.customers.CustomerProblemInterviewPage;
 import co.problemmatrix.client.interviews.problems.edit.AddProblemInterviewButton;
+import co.problemmatrix.client.interviews.solution.ListSolutionInterviews;
+import co.problemmatrix.client.interviews.solution.customers.CustomerSolutionInterviewPage;
 import co.problemmatrix.client.matrix.ProblemMatrixGeneric;
 import co.problemmatrix.client.persona.GetPersona;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginVerifyer;
@@ -21,11 +23,7 @@ public class InitializeApplication {
 	public static void verifyParameters(final String uniqueID,
 			final String companyID) {
 
-		final String problemInterview = Location
-				.getParameter("ProblemInterview");
-
-		final String problemShortInterview = Location
-				.getParameter("ProblemShortInterview");
+		final String persona = Location.getParameter("Persona");
 
 		final String personaInterview = Location
 				.getParameter("PersonaInterview");
@@ -33,7 +31,19 @@ public class InitializeApplication {
 		final String personaShortInterview = Location
 				.getParameter("PersonaShortInterview");
 
-		final String persona = Location.getParameter("Persona");
+		final String problemInterview = Location
+				.getParameter("ProblemInterview");
+
+		final String problemShortInterview = Location
+				.getParameter("ProblemShortInterview");
+
+		final String solution = Location.getParameter("Solution");
+
+		final String solutionInterview = Location
+				.getParameter("SolutionInterview");
+
+		final String solutionShortInterview = Location
+				.getParameter("SolutionShortInterview");
 
 		if (!(problemInterview == null || "null".equals(problemInterview))) {
 
@@ -44,7 +54,22 @@ public class InitializeApplication {
 				.equals(problemShortInterview))) {
 
 			RootPanel.get("main").add(
-					new CustomerProblemInterviewPage(problemShortInterview, true));
+					new CustomerProblemInterviewPage(problemShortInterview,
+							true));
+
+		} else if (!(solutionInterview == null || "null"
+				.equals(solutionInterview))) {
+
+			RootPanel.get("main")
+					.add(new CustomerSolutionInterviewPage(solutionInterview,
+							false));
+
+		} else if (!(solutionShortInterview == null || "null"
+				.equals(solutionShortInterview))) {
+
+			RootPanel.get("main").add(
+					new CustomerSolutionInterviewPage(solutionShortInterview,
+							true));
 
 		} else if (!(personaInterview == null || "null"
 				.equals(personaInterview))) {
@@ -56,12 +81,18 @@ public class InitializeApplication {
 				.equals(personaShortInterview))) {
 
 			RootPanel.get("main").add(
-					new CustomerPersonaInterviewPage(personaShortInterview, true));
+					new CustomerPersonaInterviewPage(personaShortInterview,
+							true));
 
 		} else if (persona != null) {
 
 			RootPanel.get("main").add(new ProblemMatrixPanel());
 			GetPersona.get(persona);
+
+		} else if (solution != null) {
+
+			RootPanel.get("main").add(new ProblemMatrixPanel());
+			ListSolutionInterviews.list(solution);
 
 		} else {
 

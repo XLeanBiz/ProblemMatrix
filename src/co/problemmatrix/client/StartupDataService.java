@@ -8,16 +8,20 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("startupData")
 public interface StartupDataService extends RemoteService {
-	
+
 	String getPersona(String name);
-	
+
 	String savePersona(String persona);
-	
-	String listPersonaInterviews(String company);
-	
+
+	String listPersonaInterviews(String persona);
+
 	String savePersonaInterview(String interview);
-	
-	String listProblemInterviews(String persona);
-	
+
+	String listProblemInterviews(String company);
+
 	String saveProblemInterview(String interview);
+
+	String listSolutionInterviews(String solutionName);
+
+	String saveSolutionInterview(String interview);
 }
