@@ -2,8 +2,6 @@ package co.problemmatrix.client.interviews.persona.edit;
 
 import java.util.Date;
 
-import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
-import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -32,15 +30,8 @@ public class ButtonSavePersonaInterview extends Button {
 
 	public static void prepareInterviewJson() {
 
-		if (UniqueIDGlobalVariables.companyUniqueID != null) {
-
-			String companyUniqueID = ConvertJson
-					.convertToString(UniqueIDGlobalVariables.companyUniqueID
-							.get("ID"));
-
-			ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
-					companyUniqueID, "company");
-		}
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				EditPersonaInterview.companyField.getValue(), "company");
 
 		ConvertJson
 				.setStringValue(EditPersonaInterviewPage.interview,
@@ -56,7 +47,7 @@ public class ButtonSavePersonaInterview extends Button {
 					.toString(EditPersonaInterview.dateTime.getValue()
 							.getTime()), "datetime");
 		} else {
-			
+
 			ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 					Long.toString((new Date()).getTime()), "datetime");
 		}
@@ -71,6 +62,9 @@ public class ButtonSavePersonaInterview extends Button {
 
 		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterview.videoURLField.getValue(), "videoURL");
+
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				EditPersonaInterview.problems.getHTML(), "problems");
 
 		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterview.notes.getHTML(), "notes");

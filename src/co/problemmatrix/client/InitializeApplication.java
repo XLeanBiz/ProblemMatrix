@@ -2,11 +2,11 @@ package co.problemmatrix.client;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.interviews.persona.customers.CustomerPersonaInterviewPage;
-import co.problemmatrix.client.interviews.problems.ListProblemsInterviews;
 import co.problemmatrix.client.interviews.problems.customers.CustomerProblemInterviewPage;
 import co.problemmatrix.client.interviews.problems.edit.AddProblemInterviewButton;
 import co.problemmatrix.client.interviews.solution.ListSolutionInterviews;
 import co.problemmatrix.client.interviews.solution.customers.CustomerSolutionInterviewPage;
+import co.problemmatrix.client.matrix.ListMatrixInterviews;
 import co.problemmatrix.client.matrix.ProblemMatrixGeneric;
 import co.problemmatrix.client.persona.GetPersona;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginVerifyer;
@@ -111,7 +111,7 @@ public class InitializeApplication {
 
 		if (companyID != null) {
 
-			ListProblemsInterviews.list();
+			ListMatrixInterviews.list();
 
 		} else {
 

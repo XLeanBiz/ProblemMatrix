@@ -25,7 +25,7 @@ public class CustomerSolutionInterview extends VerticalPanel {
 		EditSolutionInterview.customerNameField
 				.addClickHandler(EditSolutionInterviewQuestions
 						.getClickHandler());
-		this.add(FormField.getFormField("Interviewee",
+		this.add(FormField.getFormField("Your Name",
 				EditSolutionInterview.customerNameField));
 		EditProblemInterview.customerNameField.setWidth("300px");
 

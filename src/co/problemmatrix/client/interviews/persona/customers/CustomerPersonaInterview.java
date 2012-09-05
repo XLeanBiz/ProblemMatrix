@@ -25,7 +25,7 @@ public class CustomerPersonaInterview extends VerticalPanel {
 		EditPersonaInterview.customerNameField
 				.addClickHandler(EditPersonaInterviewQuestions
 						.getClickHandler());
-		this.add(FormField.getFormField("Interviewee",
+		this.add(FormField.getFormField("Your Name",
 				EditPersonaInterview.customerNameField));
 		EditPersonaInterview.customerNameField.setWidth("300px");
 

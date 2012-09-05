@@ -3,6 +3,7 @@ package co.problemmatrix.client.matrix;
 import java.util.ArrayList;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
 import co.problemmatrix.client.utilities.UseTracking;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
@@ -164,9 +165,23 @@ public class CompanyProblemMatrix extends FlexTable {
 			@Override
 			public void onClick(ClickEvent event) {
 
+				String problems = ConvertJson.getStringValue(interviewJson,
+						"problems");
+
 				ProblemMatrixPanel.vpMain.clear();
-				ProblemMatrixPanel.vpMain.add(new EditProblemInterviewPage(
-						interviewJson));
+
+				if (problems != null) {
+
+					ProblemMatrixPanel.vpMain.add(new EditPersonaInterviewPage(
+							interviewJson));
+				} else {
+
+					ProblemMatrixPanel.vpMain.add(new EditProblemInterviewPage(
+							interviewJson));
+				}
+
+				ProblemMatrixPanel.hpButtons.clear();
+				ProblemMatrixPanel.hpButtons.add(new ShowMatrixButton());
 			}
 		});
 

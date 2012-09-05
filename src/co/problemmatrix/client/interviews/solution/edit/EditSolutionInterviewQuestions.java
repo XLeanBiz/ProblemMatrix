@@ -100,7 +100,7 @@ public class EditSolutionInterviewQuestions extends VerticalPanel {
 						.get("openComments"));
 		openComments.setHTML(openCommentsValue);
 		openComments.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField("Comments?", openComments));
+		this.add(FormField.getVerticalFormField("Do you have any comments?", openComments));
 		openComments.setSize("500px", "80px");
 	}
 

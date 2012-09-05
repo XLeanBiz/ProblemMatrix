@@ -14,6 +14,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.datepicker.client.DateBox;
 
 public class EditPersonaInterview extends VerticalPanel {
+	
+	public static TextBox companyField = new TextBox();
 
 	public static TextBox interviewerField = new TextBox();
 
@@ -28,6 +30,8 @@ public class EditPersonaInterview extends VerticalPanel {
 	public static TextBox videoURLField = new TextBox();
 
 	public static RichTextArea notes = new RichTextArea();
+
+	public static RichTextArea problems = new RichTextArea();
 
 	public EditPersonaInterview(JSONObject interview) {
 
@@ -55,6 +59,9 @@ public class EditPersonaInterview extends VerticalPanel {
 				ConvertJson.setStringValue(interview, companyUniqueID,
 						"company");
 			}
+			
+			companyField.setValue(companyUniqueID);
+			this.add(FormField.getFormField("Company", companyField));
 
 			if (interviewerUniqueID == null
 					&& UniqueIDGlobalVariables.uniqueID != null) {
@@ -104,6 +111,13 @@ public class EditPersonaInterview extends VerticalPanel {
 		videoURLField.setValue(videoURLValue);
 		this.add(FormField.getFormField("Video URL", videoURLField));
 		videoURLField.setWidth("300px");
+
+		String problemsValue = ConvertJson.convertToString(interview
+				.get("problems"));
+		problems.setHTML(problemsValue);
+		this.add(FormField.getFormField("Main Problems<br>(comma separated)",
+				problems));
+		problems.setSize("300px", "60px");
 
 		String notesValue = ConvertJson.convertToString(interview.get("notes"));
 		notes.setHTML(notesValue);

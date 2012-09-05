@@ -4,6 +4,7 @@ import com.google.gwt.user.client.ui.ListBox;
 
 public class SolutionRateListbox extends ListBox {
 
+	public static final String KNOW_MORE = "KNOW MORE";
 	public static final String MUST_HAVE = "MUST HAVE";
 	public static final String NICE_TO_HAVE = "NICE TO HAVE";
 	public static final String DONT_CARE = "DON'T CARE";
@@ -21,8 +22,13 @@ public class SolutionRateListbox extends ListBox {
 		this.addItem("I DON'T CARE about this solution.", DONT_CARE);
 		this.addItem("It will be NICE TO HAVE this solution.", NICE_TO_HAVE);
 		this.addItem("I MUST HAVE this solution.", MUST_HAVE);
+		this.addItem("I want to KNOW MORE about this solution.", KNOW_MORE);
 
-		if (MUST_HAVE.equals(rate)) {
+		if (KNOW_MORE.equals(rate)) {
+
+			this.setSelectedIndex(6);
+
+		} else if (MUST_HAVE.equals(rate)) {
 
 			this.setSelectedIndex(5);
 

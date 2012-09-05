@@ -38,6 +38,8 @@ public class SavePersonaInterview {
 		parameters += URLUtilities
 				.addSaveParameterString(interview, "videoURL");
 
+		parameters += URLUtilities.addSaveParameterText(interview, "problems");
+
 		parameters += URLUtilities.addSaveParameterText(interview, "notes");
 
 		parameters += URLUtilities.addSaveParameterText(interview,

@@ -1,7 +1,7 @@
 package co.problemmatrix.server;
 
-
 import co.problemmatrix.client.StartupDataService;
+import co.problemmatrix.server.interviews.ListMatrixInterviews;
 import co.problemmatrix.server.interviews.ListPersonaInterviews;
 import co.problemmatrix.server.interviews.ListProblemInterviews;
 import co.problemmatrix.server.interviews.ListSolutionInterviews;
@@ -21,6 +21,11 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class StartupDataServiceImpl extends RemoteServiceServlet implements
 		StartupDataService {
+
+	public String listMatrixInterviews(final String company) {
+
+		return ListMatrixInterviews.list(company);
+	}
 
 	public String listProblemInterviews(final String company) {
 

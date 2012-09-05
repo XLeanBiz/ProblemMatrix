@@ -1,9 +1,9 @@
-package co.problemmatrix.client.interviews.persona;
+package co.problemmatrix.client.interviews.problems;
 
 import java.util.Date;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
-import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
+import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -13,9 +13,9 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class PersonaInterviewsListPanel extends VerticalPanel {
+public class ProblemsInterviewsListPanel extends VerticalPanel {
 
-	public PersonaInterviewsListPanel(JSONArray interviews) {
+	public ProblemsInterviewsListPanel(JSONArray interviews) {
 
 		this.setSpacing(20);
 
@@ -28,9 +28,6 @@ public class PersonaInterviewsListPanel extends VerticalPanel {
 
 			final String customerName = ConvertJson.getStringValue(
 					interviewJson, "customerName");
-
-			final String personaID = ConvertJson.getStringValue(interviewJson,
-					"persona");
 
 			String dateString = "";
 			if (datetime != null) {
@@ -46,12 +43,12 @@ public class PersonaInterviewsListPanel extends VerticalPanel {
 				public void onClick(ClickEvent event) {
 
 					ProblemMatrixPanel.vpMain.clear();
-					ProblemMatrixPanel.vpMain.add(new EditPersonaInterviewPage(
+					ProblemMatrixPanel.vpMain.add(new EditProblemInterviewPage(
 							interviewJson));
 
 					ProblemMatrixPanel.hpButtons.clear();
 					ProblemMatrixPanel.hpButtons
-							.add(new ListPersonaInterviewButton(personaID));
+							.add(new ListProblemsInterviewButton());
 				}
 			});
 

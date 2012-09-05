@@ -107,7 +107,7 @@ public class EditProblemInterviewQuestions extends VerticalPanel {
 				EditProblemInterviewPage.interview, "openComments");
 		openComments.setHTML(openCommentsValue);
 		openComments.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField("Comments?", openComments));
+		this.add(FormField.getVerticalFormField("Do you have any comments?", openComments));
 		openComments.setSize("500px", "80px");
 	}
 
