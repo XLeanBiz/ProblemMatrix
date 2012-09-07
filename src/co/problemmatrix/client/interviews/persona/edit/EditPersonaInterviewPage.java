@@ -1,5 +1,8 @@
 package co.problemmatrix.client.interviews.persona.edit;
 
+import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.interviews.persona.ListPersonaInterviewButton;
+
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -28,5 +31,17 @@ public class EditPersonaInterviewPage extends VerticalPanel {
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
 		this.add(new ButtonSavePersonaInterview());
+	}
+
+	public static void showButtons(final JSONObject interviewJson,
+			final String persona) {
+
+		ProblemMatrixPanel.hpButtons.clear();
+
+		ProblemMatrixPanel.hpButtons.add(new RefreshPersonaInterviewButton(
+				interviewJson, persona));
+
+		ProblemMatrixPanel.hpButtons
+				.add(new ListPersonaInterviewButton(persona));
 	}
 }

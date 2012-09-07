@@ -7,7 +7,7 @@ import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
-public class ListMatrixInterviews {
+public class ListProblemMatrixInterviews {
 
 	// http://jsonpfy.startupsdata.appspot.com/ListDataService
 	// ?kind=Interviews

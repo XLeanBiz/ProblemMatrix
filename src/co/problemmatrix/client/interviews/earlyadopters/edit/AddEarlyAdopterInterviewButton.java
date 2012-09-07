@@ -1,4 +1,4 @@
-package co.problemmatrix.client.interviews.solution.edit;
+package co.problemmatrix.client.interviews.earlyadopters.edit;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.utilities.UseTracking;
@@ -9,9 +9,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.Button;
 
-public class AddSolutionInterviewButton extends Button {
+public class AddEarlyAdopterInterviewButton extends Button {
 
-	public AddSolutionInterviewButton(final String solutionName) {
+	public AddEarlyAdopterInterviewButton(final String solutionName) {
 
 		this.setText("Add Interview");
 
@@ -25,10 +25,11 @@ public class AddSolutionInterviewButton extends Button {
 				ConvertJson.setStringValue(interview, solutionName, "solution");
 
 				ProblemMatrixPanel.vpMain.clear();
-				ProblemMatrixPanel.vpMain.add(new EditSolutionInterviewPage(
-						interview));
+				ProblemMatrixPanel.vpMain
+						.add(new EditEarlyAdoptersInterviewPage(interview));
 
-				EditSolutionInterviewPage.showButtons(interview, solutionName);
+				EditEarlyAdoptersInterviewPage.showButtons(interview,
+						solutionName);
 			}
 		});
 	}

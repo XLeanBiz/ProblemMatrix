@@ -1,6 +1,8 @@
 package co.problemmatrix.client;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.interviews.earlyadopters.ListEarlyAdoptersInterviews;
+import co.problemmatrix.client.interviews.earlyadopters.customers.CustomerEarlyAdoptersInterviewPage;
 import co.problemmatrix.client.interviews.persona.customers.CustomerPersonaInterviewPage;
 import co.problemmatrix.client.interviews.problems.customers.CustomerProblemInterviewPage;
 import co.problemmatrix.client.interviews.problems.edit.AddProblemInterviewButton;
@@ -44,6 +46,11 @@ public class InitializeApplication {
 
 		final String solutionShortInterview = Location
 				.getParameter("SolutionShortInterview");
+		
+		final String earlyAdopters = Location.getParameter("EarlyAdopters");
+
+		final String earlyAdoptersInterview = Location
+				.getParameter("EarlyAdopterInterview");
 
 		if (!(problemInterview == null || "null".equals(problemInterview))) {
 
@@ -71,7 +78,14 @@ public class InitializeApplication {
 					new CustomerSolutionInterviewPage(solutionShortInterview,
 							true));
 
-		} else if (!(personaInterview == null || "null"
+		} else  if (!(earlyAdoptersInterview == null || "null"
+				.equals(earlyAdoptersInterview))) {
+
+			RootPanel.get("main")
+					.add(new CustomerEarlyAdoptersInterviewPage(earlyAdoptersInterview,
+							false));
+
+		}  else if (!(personaInterview == null || "null"
 				.equals(personaInterview))) {
 
 			RootPanel.get("main").add(
@@ -93,6 +107,11 @@ public class InitializeApplication {
 
 			RootPanel.get("main").add(new ProblemMatrixPanel());
 			ListSolutionInterviews.list(solution);
+
+		} else if (earlyAdopters != null) {
+
+			RootPanel.get("main").add(new ProblemMatrixPanel());
+			ListEarlyAdoptersInterviews.list(earlyAdopters);
 
 		} else {
 

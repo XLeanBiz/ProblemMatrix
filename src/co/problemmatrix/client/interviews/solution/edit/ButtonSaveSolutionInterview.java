@@ -2,7 +2,8 @@ package co.problemmatrix.client.interviews.solution.edit;
 
 import java.util.Date;
 
-import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
+import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterview;
+import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -31,15 +32,8 @@ public class ButtonSaveSolutionInterview extends Button {
 
 	public static void prepareInterviewJson() {
 
-		if (UniqueIDGlobalVariables.companyUniqueID != null) {
-
-			String companyUniqueID = ConvertJson
-					.convertToString(UniqueIDGlobalVariables.companyUniqueID
-							.get("ID"));
-
-			ConvertJson.setStringValue(EditSolutionInterviewPage.interview,
-					companyUniqueID, "company");
-		}
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
+				EditPersonaInterview.companyField.getValue(), "company");
 
 		ConvertJson.setStringValue(EditSolutionInterviewPage.interview,
 				EditSolutionInterview.interviewerField.getValue(),

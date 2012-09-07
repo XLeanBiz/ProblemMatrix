@@ -49,9 +49,8 @@ public class PersonaInterviewsListPanel extends VerticalPanel {
 					ProblemMatrixPanel.vpMain.add(new EditPersonaInterviewPage(
 							interviewJson));
 
-					ProblemMatrixPanel.hpButtons.clear();
-					ProblemMatrixPanel.hpButtons
-							.add(new ListPersonaInterviewButton(personaID));
+					EditPersonaInterviewPage.showButtons(interviewJson,
+							personaID);
 				}
 			});
 

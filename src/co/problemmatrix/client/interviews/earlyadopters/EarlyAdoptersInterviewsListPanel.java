@@ -1,9 +1,9 @@
-package co.problemmatrix.client.interviews.solution;
+package co.problemmatrix.client.interviews.earlyadopters;
 
 import java.util.Date;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
-import co.problemmatrix.client.interviews.solution.edit.EditSolutionInterviewPage;
+import co.problemmatrix.client.interviews.earlyadopters.edit.EditEarlyAdoptersInterviewPage;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -13,9 +13,9 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class SolutionInterviewsListPanel extends VerticalPanel {
+public class EarlyAdoptersInterviewsListPanel extends VerticalPanel {
 
-	public SolutionInterviewsListPanel(JSONArray interviews) {
+	public EarlyAdoptersInterviewsListPanel(JSONArray interviews) {
 
 		this.setSpacing(20);
 
@@ -47,9 +47,10 @@ public class SolutionInterviewsListPanel extends VerticalPanel {
 
 					ProblemMatrixPanel.vpMain.clear();
 					ProblemMatrixPanel.vpMain
-							.add(new EditSolutionInterviewPage(interviewJson));
+							.add(new EditEarlyAdoptersInterviewPage(
+									interviewJson));
 
-					EditSolutionInterviewPage.showButtons(interviewJson,
+					EditEarlyAdoptersInterviewPage.showButtons(interviewJson,
 							solution);
 				}
 			});

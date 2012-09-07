@@ -1,18 +1,18 @@
-package co.problemmatrix.client.interviews.solution.edit;
+package co.problemmatrix.client.interviews.earlyadopters.edit;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
-import co.problemmatrix.client.interviews.solution.ListSolutionInterviewButton;
+import co.problemmatrix.client.interviews.earlyadopters.ListEarlyAdoptersInterviewButton;
 
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class EditSolutionInterviewPage extends VerticalPanel {
+public class EditEarlyAdoptersInterviewPage extends VerticalPanel {
 
 	public static JSONObject interview = new JSONObject();
 
-	public EditSolutionInterviewPage(JSONObject interviewParameter) {
+	public EditEarlyAdoptersInterviewPage(JSONObject interviewParameter) {
 
 		interview = interviewParameter;
 
@@ -22,15 +22,15 @@ public class EditSolutionInterviewPage extends VerticalPanel {
 
 		HorizontalPanel hp = new HorizontalPanel();
 
-		hp.add(new EditSolutionInterview(interview));
+		hp.add(new EditEarlyAdoptersInterview(interview));
 
-		hp.add(new EditSolutionInterviewQuestions(interview, false));
+		hp.add(new EditEarlyAdoptersInterviewQuestions(interview, false));
 
 		this.add(hp);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
-		this.add(new ButtonSaveSolutionInterview());
+		this.add(new ButtonSaveEarlyAdoptersInterview());
 	}
 
 	public static void showButtons(final JSONObject interviewJson,
@@ -38,10 +38,11 @@ public class EditSolutionInterviewPage extends VerticalPanel {
 
 		ProblemMatrixPanel.hpButtons.clear();
 
-		ProblemMatrixPanel.hpButtons.add(new RefreshSolutionInterviewButton(
-				interviewJson, solution));
+		ProblemMatrixPanel.hpButtons
+				.add(new RefreshEarlyAdoptersInterviewButton(interviewJson,
+						solution));
 
-		ProblemMatrixPanel.hpButtons.add(new ListSolutionInterviewButton(
+		ProblemMatrixPanel.hpButtons.add(new ListEarlyAdoptersInterviewButton(
 				solution));
 	}
 }

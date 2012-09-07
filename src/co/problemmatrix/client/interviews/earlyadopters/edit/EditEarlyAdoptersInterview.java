@@ -1,4 +1,4 @@
-package co.problemmatrix.client.interviews.solution.edit;
+package co.problemmatrix.client.interviews.earlyadopters.edit;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class EditSolutionInterview extends VerticalPanel {
+public class EditEarlyAdoptersInterview extends VerticalPanel {
 
 	public static TextBox companyField = new TextBox();
 
@@ -31,7 +31,7 @@ public class EditSolutionInterview extends VerticalPanel {
 
 	public static RichTextArea notes = new RichTextArea();
 
-	public EditSolutionInterview(JSONObject interview) {
+	public EditEarlyAdoptersInterview(JSONObject interview) {
 
 		this.setSpacing(20);
 
