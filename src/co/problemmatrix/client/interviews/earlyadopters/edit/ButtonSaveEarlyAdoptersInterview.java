@@ -2,8 +2,6 @@ package co.problemmatrix.client.interviews.earlyadopters.edit;
 
 import java.util.Date;
 
-import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterview;
-import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -33,8 +31,8 @@ public class ButtonSaveEarlyAdoptersInterview extends Button {
 
 	public static void prepareInterviewJson() {
 
-		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
-				EditPersonaInterview.companyField.getValue(), "company");
+		ConvertJson.setStringValue(EditEarlyAdoptersInterviewPage.interview,
+				EditEarlyAdoptersInterview.companyField.getValue(), "company");
 
 		ConvertJson.setStringValue(EditEarlyAdoptersInterviewPage.interview,
 				EditEarlyAdoptersInterview.interviewerField.getValue(),

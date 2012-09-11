@@ -7,6 +7,7 @@ import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -27,12 +28,14 @@ public class Header extends HorizontalPanel {
 			companyString = "?company=" + companyID;
 		}
 
-		HTML title = new HTML("<a href='http://problemmatrix.com"
-				+ companyString + "'><h1><font color=black>Problem Matrix</font></h1></a>");
+		HTML title = new HTML(
+				"<a href='http://custdevinterviews.co"
+						+ companyString
+						+ "'><h1><font color=black>Customer Dev Interviews</font></h1></a>");
 		vp.add(title);
 
 		HTML subtitle = new HTML(
-				"&nbsp;&nbsp;&nbsp;&nbsp;<b>Your shortest path to Customer Development</b>");
+				"&nbsp;&nbsp;&nbsp;&nbsp;<b>Your shortest path to Success.</b>");
 		vp.add(subtitle);
 
 		this.add(vp);
@@ -41,9 +44,13 @@ public class Header extends HorizontalPanel {
 		hp2.setWidth("100%");
 		hp2.setSpacing(10);
 		hp2.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+		hp2.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
+		hp2.add(new CompanyField());
 		hp2.add(CompanyIcon.hpCompanyIcon);
 		hp2.add(FacebookLoginPanel.hpFacebookLogin);
+		FacebookLoginPanel.hpFacebookLogin
+				.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		hp2.add(new BlogIcon());
 		hp2.add(new FacebookFeedbackButton());
 
