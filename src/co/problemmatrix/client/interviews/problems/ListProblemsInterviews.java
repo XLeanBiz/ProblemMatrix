@@ -4,7 +4,6 @@ import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.interviews.problems.edit.AddProblemInterviewButton;
-import co.problemmatrix.client.matrix.CompanyProblemMatrix;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
@@ -42,7 +41,8 @@ public class ListProblemsInterviews {
 
 								ProblemMatrixPanel.vpMain.clear();
 								ProblemMatrixPanel.vpMain
-										.add(new CompanyProblemMatrix(jsonArray));
+										.add(new ProblemsInterviewsListPanel(
+												jsonArray));
 
 								ProblemMatrixPanel.hpButtons.clear();
 								ProblemMatrixPanel.hpButtons

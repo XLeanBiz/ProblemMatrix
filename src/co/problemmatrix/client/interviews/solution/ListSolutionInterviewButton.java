@@ -8,7 +8,7 @@ import com.google.gwt.user.client.ui.Button;
 
 public class ListSolutionInterviewButton extends Button {
 
-	public ListSolutionInterviewButton(final String solutionName) {
+	public ListSolutionInterviewButton() {
 
 		this.setText("Interviews");
 
@@ -17,7 +17,7 @@ public class ListSolutionInterviewButton extends Button {
 
 				new UseTracking(this.getClass().getName());
 
-				ListSolutionInterviews.list(solutionName);
+				ListSolutionInterviews.list();
 			}
 		});
 	}

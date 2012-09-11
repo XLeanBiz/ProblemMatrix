@@ -10,8 +10,7 @@ import com.google.gwt.user.client.ui.Button;
 
 public class RefreshSolutionInterviewButton extends Button {
 
-	public RefreshSolutionInterviewButton(final JSONObject interviewJson,
-			final String solution) {
+	public RefreshSolutionInterviewButton(final JSONObject interviewJson) {
 
 		this.setText("Refresh");
 
@@ -24,7 +23,7 @@ public class RefreshSolutionInterviewButton extends Button {
 				ProblemMatrixPanel.vpMain.add(new EditSolutionInterviewPage(
 						interviewJson));
 
-				EditSolutionInterviewPage.showButtons(interviewJson, solution);
+				EditSolutionInterviewPage.showButtons(interviewJson);
 			}
 		});
 	}

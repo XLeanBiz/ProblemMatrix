@@ -12,7 +12,7 @@ public class AddProblemInterviewButton extends Button {
 
 	public AddProblemInterviewButton() {
 
-		this.setText("ADD INTERVIEW");
+		this.setText("Add Interview");
 
 		this.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {

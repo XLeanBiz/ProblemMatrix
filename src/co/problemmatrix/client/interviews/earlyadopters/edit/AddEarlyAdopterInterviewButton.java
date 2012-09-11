@@ -2,7 +2,6 @@ package co.problemmatrix.client.interviews.earlyadopters.edit;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.utilities.UseTracking;
-import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -11,7 +10,7 @@ import com.google.gwt.user.client.ui.Button;
 
 public class AddEarlyAdopterInterviewButton extends Button {
 
-	public AddEarlyAdopterInterviewButton(final String solutionName) {
+	public AddEarlyAdopterInterviewButton() {
 
 		this.setText("Add Interview");
 
@@ -22,14 +21,11 @@ public class AddEarlyAdopterInterviewButton extends Button {
 
 				JSONObject interview = new JSONObject();
 
-				ConvertJson.setStringValue(interview, solutionName, "solution");
-
 				ProblemMatrixPanel.vpMain.clear();
 				ProblemMatrixPanel.vpMain
 						.add(new EditEarlyAdoptersInterviewPage(interview));
 
-				EditEarlyAdoptersInterviewPage.showButtons(interview,
-						solutionName);
+				EditEarlyAdoptersInterviewPage.showButtons(interview);
 			}
 		});
 	}

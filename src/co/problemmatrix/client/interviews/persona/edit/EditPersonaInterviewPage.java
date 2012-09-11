@@ -33,15 +33,13 @@ public class EditPersonaInterviewPage extends VerticalPanel {
 		this.add(new ButtonSavePersonaInterview());
 	}
 
-	public static void showButtons(final JSONObject interviewJson,
-			final String persona) {
+	public static void showButtons(final JSONObject interviewJson) {
 
 		ProblemMatrixPanel.hpButtons.clear();
 
 		ProblemMatrixPanel.hpButtons.add(new RefreshPersonaInterviewButton(
-				interviewJson, persona));
+				interviewJson));
 
-		ProblemMatrixPanel.hpButtons
-				.add(new ListPersonaInterviewButton(persona));
+		ProblemMatrixPanel.hpButtons.add(new ListPersonaInterviewButton());
 	}
 }

@@ -2,7 +2,6 @@ package co.problemmatrix.client.persona;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.interviews.persona.ListPersonaInterviewButton;
-import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -38,14 +37,11 @@ public class ButtonShowPersona extends Button {
 				ProblemMatrixPanel.vpMain.clear();
 				ProblemMatrixPanel.vpMain.add(new ShowPersona(personaJson));
 
-				String personaID = ConvertJson.convertToString(personaJson
-						.get("ID"));
-
 				ProblemMatrixPanel.hpButtons.clear();
 				ProblemMatrixPanel.hpButtons.add(new ButtonEditPersona(
 						personaJson));
 				ProblemMatrixPanel.hpButtons
-						.add(new ListPersonaInterviewButton(personaID));
+						.add(new ListPersonaInterviewButton());
 
 			}
 		});

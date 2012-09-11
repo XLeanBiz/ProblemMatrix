@@ -12,17 +12,16 @@ public class ListPersonaInterviews {
 
 	private static String listUrl = "https://jsonpfy.startupsdata.appspot.com/ListDataService";
 
-	public static String list(final String persona) {
+	public static String list(final String company) {
 
 		String parameters = "kind=PersonasInterviews";
-		
-		parameters += "&filterField=persona&filterValue="
-				+ persona;
-		
-	//	parameters += "&sortField=datetime&sortDirection=desc";
 
-		final String jsonString = URLUtilities.fetchURLPost(listUrl,
-				parameters + EncryptText.getAuthParameter());
+		parameters += "&filterField=company&filterValue=" + company;
+
+		//parameters += "&sortField=datetime&sortDirection=desc";
+
+		final String jsonString = URLUtilities.fetchURLPost(listUrl, parameters
+				+ EncryptText.getAuthParameter());
 
 		return jsonString;
 	}

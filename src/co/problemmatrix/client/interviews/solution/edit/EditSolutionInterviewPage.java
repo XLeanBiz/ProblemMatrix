@@ -33,15 +33,14 @@ public class EditSolutionInterviewPage extends VerticalPanel {
 		this.add(new ButtonSaveSolutionInterview());
 	}
 
-	public static void showButtons(final JSONObject interviewJson,
-			final String solution) {
+	public static void showButtons(final JSONObject interviewJson) {
 
 		ProblemMatrixPanel.hpButtons.clear();
 
 		ProblemMatrixPanel.hpButtons.add(new RefreshSolutionInterviewButton(
-				interviewJson, solution));
+				interviewJson));
 
 		ProblemMatrixPanel.hpButtons.add(new ListSolutionInterviewButton(
-				solution));
+				));
 	}
 }

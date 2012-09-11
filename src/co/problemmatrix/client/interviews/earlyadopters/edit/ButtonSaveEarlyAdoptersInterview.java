@@ -33,6 +33,9 @@ public class ButtonSaveEarlyAdoptersInterview extends Button {
 
 		ConvertJson.setStringValue(EditEarlyAdoptersInterviewPage.interview,
 				EditEarlyAdoptersInterview.companyField.getValue(), "company");
+		
+		ConvertJson.setStringValue(EditEarlyAdoptersInterviewPage.interview,
+				EditEarlyAdoptersInterview.personaField.getValue(), "persona");
 
 		ConvertJson.setStringValue(EditEarlyAdoptersInterviewPage.interview,
 				EditEarlyAdoptersInterview.interviewerField.getValue(),

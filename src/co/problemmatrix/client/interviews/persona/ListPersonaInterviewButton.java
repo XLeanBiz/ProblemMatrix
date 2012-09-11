@@ -8,7 +8,7 @@ import com.google.gwt.user.client.ui.Button;
 
 public class ListPersonaInterviewButton extends Button {
 
-	public ListPersonaInterviewButton(final String persona) {
+	public ListPersonaInterviewButton() {
 
 		this.setText("Interviews");
 
@@ -17,7 +17,7 @@ public class ListPersonaInterviewButton extends Button {
 
 				new UseTracking(this.getClass().getName());
 
-				ListPersonaInterviews.list(persona);
+				ListPersonaInterviews.list();
 			}
 		});
 	}

@@ -10,6 +10,7 @@ import com.google.gwt.json.client.JSONString;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window.Location;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -25,6 +26,8 @@ public class GWTEntryPoint implements EntryPoint {
 
 		RootPanel.get("main").clear();
 		RootPanel.get("main").setWidth("100%");
+		VerticalPanel vpMain = new VerticalPanel();
+		RootPanel.get("main").add(vpMain, 0, 0);
 
 		String uniqueID = EncryptText.decrypt(Cookies.getCookie("UniqueID"));
 		// uniqueID = "AllineWatkins_1332886062783";
@@ -52,7 +55,7 @@ public class GWTEntryPoint implements EntryPoint {
 			}
 		}
 
-		InitializeApplication.verifyParameters(uniqueID, company);
+		InitializeApplication.verifyParameters(vpMain, uniqueID, company);
 
 	}
 }

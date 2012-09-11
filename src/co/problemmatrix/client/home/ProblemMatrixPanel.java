@@ -19,6 +19,8 @@ public class ProblemMatrixPanel extends VerticalPanel {
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 
+		HorizontalPanel hp = new HorizontalPanel();
+
 		VerticalPanel vp = new VerticalPanel();
 
 		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
@@ -38,6 +40,10 @@ public class ProblemMatrixPanel extends VerticalPanel {
 
 		vp.add(table);
 
-		this.add(vp);
+		hp.add(vp);
+		
+		hp.add(new SideBar());
+
+		this.add(hp);
 	}
 }

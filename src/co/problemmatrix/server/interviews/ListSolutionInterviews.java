@@ -12,11 +12,11 @@ public class ListSolutionInterviews {
 
 	private static String listUrl = "https://jsonpfy.startupsdata.appspot.com/ListDataService";
 
-	public static String list(final String solutionName) {
+	public static String list(final String company) {
 
 		String parameters = "kind=SolutionsInterviews";
 
-		parameters += "&filterField=solution&filterValue=" + solutionName;
+		parameters += "&filterField=company&filterValue=" + company;
 
 		// parameters += "&sortField=datetime&sortDirection=desc";
 

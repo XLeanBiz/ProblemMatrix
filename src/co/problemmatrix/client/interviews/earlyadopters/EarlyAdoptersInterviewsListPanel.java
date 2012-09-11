@@ -32,6 +32,12 @@ public class EarlyAdoptersInterviewsListPanel extends VerticalPanel {
 			final String solution = ConvertJson.getStringValue(interviewJson,
 					"solution");
 
+			final String earlyAdopterRate = ConvertJson.getStringValue(
+					interviewJson, "earlyAdopterRate");
+
+			final String persona = ConvertJson.getStringValue(interviewJson,
+					"persona");
+
 			String dateString = "";
 			if (datetime != null) {
 
@@ -39,7 +45,8 @@ public class EarlyAdoptersInterviewsListPanel extends VerticalPanel {
 			}
 
 			HTML html = new HTML(dateString + "<a href=#><b>" + " "
-					+ customerName + "</b></a>");
+					+ customerName + "</b> (" + persona + ") - " + solution
+					+ " - " + earlyAdopterRate + "</a>");
 			html.addClickHandler(new ClickHandler() {
 
 				@Override
@@ -50,8 +57,7 @@ public class EarlyAdoptersInterviewsListPanel extends VerticalPanel {
 							.add(new EditEarlyAdoptersInterviewPage(
 									interviewJson));
 
-					EditEarlyAdoptersInterviewPage.showButtons(interviewJson,
-							solution);
+					EditEarlyAdoptersInterviewPage.showButtons(interviewJson);
 				}
 			});
 

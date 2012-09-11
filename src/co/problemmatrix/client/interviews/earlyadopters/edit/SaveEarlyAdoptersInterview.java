@@ -3,7 +3,6 @@ package co.problemmatrix.client.interviews.earlyadopters.edit;
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.interviews.earlyadopters.ListEarlyAdoptersInterviews;
-import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONObject;
@@ -25,10 +24,7 @@ public class SaveEarlyAdoptersInterview {
 
 					public void onSuccess(String unoUserJson) {
 
-						String solutionID = ConvertJson
-								.convertToString(interview.get("solution"));
-
-						ListEarlyAdoptersInterviews.list(solutionID);
+						ListEarlyAdoptersInterviews.list();
 					}
 				});
 

@@ -19,38 +19,51 @@ public class ProblemsInterviewsListPanel extends VerticalPanel {
 
 		this.setSpacing(20);
 
-		for (int i = 0; i < interviews.size(); i++) {
+		if (interviews.size() > 0) {
 
-			final JSONObject interviewJson = (JSONObject) interviews.get(i);
+			for (int i = interviews.size() - 1; i >= 0; i--) {
 
-			final String datetime = ConvertJson.getStringValue(interviewJson,
-					"datetime");
+				final JSONObject interviewJson = (JSONObject) interviews.get(i);
 
-			final String customerName = ConvertJson.getStringValue(
-					interviewJson, "customerName");
+				final String datetime = ConvertJson.getStringValue(
+						interviewJson, "datetime");
 
-			String dateString = "";
-			if (datetime != null) {
+				final String customerName = ConvertJson.getStringValue(
+						interviewJson, "customerName");
 
-				dateString = new Date(new Long(datetime)) + " - ";
-			}
+				final String problemRate = ConvertJson.getStringValue(
+						interviewJson, "problemRate");
 
-			HTML html = new HTML(dateString + "<a href=#><b>" + " "
-					+ customerName + "</b></a>");
-			html.addClickHandler(new ClickHandler() {
+				final String persona = ConvertJson.getStringValue(
+						interviewJson, "persona");
 
-				@Override
-				public void onClick(ClickEvent event) {
+				final String problem = ConvertJson.getStringValue(
+						interviewJson, "problem");
 
-					ProblemMatrixPanel.vpMain.clear();
-					ProblemMatrixPanel.vpMain.add(new EditProblemInterviewPage(
-							interviewJson));
+				String dateString = "";
+				if (datetime != null) {
 
-					EditProblemInterviewPage.showButtons(interviewJson);
+					dateString = new Date(new Long(datetime)) + " - ";
 				}
-			});
 
-			this.add(html);
+				HTML html = new HTML(dateString + "<a href=#><b>" + " "
+						+ customerName + "</b> (" + persona + ") - " + problem
+						+ " - " + problemRate + "</a>");
+				html.addClickHandler(new ClickHandler() {
+
+					@Override
+					public void onClick(ClickEvent event) {
+
+						ProblemMatrixPanel.vpMain.clear();
+						ProblemMatrixPanel.vpMain
+								.add(new EditProblemInterviewPage(interviewJson));
+
+						EditProblemInterviewPage.showButtons(interviewJson);
+					}
+				});
+
+				this.add(html);
+			}
 		}
 	}
 }

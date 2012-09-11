@@ -20,6 +20,8 @@ public class SaveSolutionInterview {
 		}
 
 		parameters += URLUtilities.addSaveParameterString(interview, "company");
+		
+		parameters += URLUtilities.addSaveParameterString(interview, "persona");
 
 		parameters += URLUtilities.addSaveParameterString(interview,
 				"interviewer");

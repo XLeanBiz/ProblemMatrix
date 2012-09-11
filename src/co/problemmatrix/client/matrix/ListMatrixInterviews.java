@@ -3,7 +3,6 @@ package co.problemmatrix.client.matrix;
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.home.ProblemMatrixPanel;
-import co.problemmatrix.client.interviews.problems.edit.AddProblemInterviewButton;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
@@ -44,8 +43,6 @@ public class ListMatrixInterviews {
 										.add(new CompanyProblemMatrix(jsonArray));
 
 								ProblemMatrixPanel.hpButtons.clear();
-								ProblemMatrixPanel.hpButtons
-										.add(new AddProblemInterviewButton());
 							}
 						}
 					});

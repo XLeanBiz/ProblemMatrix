@@ -33,16 +33,14 @@ public class EditEarlyAdoptersInterviewPage extends VerticalPanel {
 		this.add(new ButtonSaveEarlyAdoptersInterview());
 	}
 
-	public static void showButtons(final JSONObject interviewJson,
-			final String solution) {
+	public static void showButtons(final JSONObject interviewJson) {
 
 		ProblemMatrixPanel.hpButtons.clear();
 
 		ProblemMatrixPanel.hpButtons
-				.add(new RefreshEarlyAdoptersInterviewButton(interviewJson,
-						solution));
+				.add(new RefreshEarlyAdoptersInterviewButton(interviewJson));
 
-		ProblemMatrixPanel.hpButtons.add(new ListEarlyAdoptersInterviewButton(
-				solution));
+		ProblemMatrixPanel.hpButtons
+				.add(new ListEarlyAdoptersInterviewButton());
 	}
 }

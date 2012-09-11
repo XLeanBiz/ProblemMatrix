@@ -3,7 +3,6 @@ package co.problemmatrix.client.interviews.solution.edit;
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
 import co.problemmatrix.client.interviews.solution.ListSolutionInterviews;
-import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONObject;
@@ -25,10 +24,7 @@ public class SaveSolutionInterview {
 
 					public void onSuccess(String unoUserJson) {
 
-						String solutionID = ConvertJson
-								.convertToString(interview.get("solution"));
-
-						ListSolutionInterviews.list(solutionID);
+						ListSolutionInterviews.list();
 					}
 				});
 

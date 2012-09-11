@@ -12,11 +12,11 @@ public class ListEarlyAdoptersInterviews {
 
 	private static String listUrl = "https://jsonpfy.startupsdata.appspot.com/ListDataService";
 
-	public static String list(final String solutionName) {
+	public static String list(final String company) {
 
 		String parameters = "kind=EarlyAdoptersInterviews";
 
-		parameters += "&filterField=solution&filterValue=" + solutionName;
+		parameters += "&filterField=company&filterValue=" + company;
 
 		final String jsonString = URLUtilities.fetchURLPost(listUrl, parameters
 				+ EncryptText.getAuthParameter());

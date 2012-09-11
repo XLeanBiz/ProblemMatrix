@@ -8,7 +8,7 @@ import com.google.gwt.user.client.ui.Button;
 
 public class ListEarlyAdoptersInterviewButton extends Button {
 
-	public ListEarlyAdoptersInterviewButton(final String solutionName) {
+	public ListEarlyAdoptersInterviewButton() {
 
 		this.setText("Interviews");
 
@@ -17,7 +17,7 @@ public class ListEarlyAdoptersInterviewButton extends Button {
 
 				new UseTracking(this.getClass().getName());
 
-				ListEarlyAdoptersInterviews.list(solutionName);
+				ListEarlyAdoptersInterviews.list();
 			}
 		});
 	}

@@ -32,6 +32,12 @@ public class SolutionInterviewsListPanel extends VerticalPanel {
 			final String solution = ConvertJson.getStringValue(interviewJson,
 					"solution");
 
+			final String solutionRate = ConvertJson.getStringValue(
+					interviewJson, "solutionRate");
+
+			final String persona = ConvertJson.getStringValue(interviewJson,
+					"persona");
+
 			String dateString = "";
 			if (datetime != null) {
 
@@ -39,7 +45,8 @@ public class SolutionInterviewsListPanel extends VerticalPanel {
 			}
 
 			HTML html = new HTML(dateString + "<a href=#><b>" + " "
-					+ customerName + "</b></a>");
+					+ customerName + "</b> (" + persona + ") - " + solution
+					+ " - " + solutionRate + "</a>");
 			html.addClickHandler(new ClickHandler() {
 
 				@Override
@@ -49,8 +56,7 @@ public class SolutionInterviewsListPanel extends VerticalPanel {
 					ProblemMatrixPanel.vpMain
 							.add(new EditSolutionInterviewPage(interviewJson));
 
-					EditSolutionInterviewPage.showButtons(interviewJson,
-							solution);
+					EditSolutionInterviewPage.showButtons(interviewJson);
 				}
 			});
 

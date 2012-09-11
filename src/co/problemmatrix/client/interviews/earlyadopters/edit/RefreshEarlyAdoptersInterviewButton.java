@@ -10,8 +10,7 @@ import com.google.gwt.user.client.ui.Button;
 
 public class RefreshEarlyAdoptersInterviewButton extends Button {
 
-	public RefreshEarlyAdoptersInterviewButton(final JSONObject interviewJson,
-			final String solution) {
+	public RefreshEarlyAdoptersInterviewButton(final JSONObject interviewJson) {
 
 		this.setText("Refresh");
 
@@ -24,8 +23,7 @@ public class RefreshEarlyAdoptersInterviewButton extends Button {
 				ProblemMatrixPanel.vpMain
 						.add(new EditEarlyAdoptersInterviewPage(interviewJson));
 
-				EditEarlyAdoptersInterviewPage.showButtons(interviewJson,
-						solution);
+				EditEarlyAdoptersInterviewPage.showButtons(interviewJson);
 			}
 		});
 	}

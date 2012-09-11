@@ -25,6 +25,7 @@ public class CompanyField extends HorizontalPanel {
 		final TextBox companyField = new TextBox();
 		companyField.setValue(companyID);
 		this.add(FormField.getFormField("<b>Company</b>", companyField));
+		companyField.setWidth("200px");
 
 		Button enter = new Button("Enter");
 

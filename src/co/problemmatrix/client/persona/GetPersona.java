@@ -44,7 +44,7 @@ public class GetPersona {
 						ProblemMatrixPanel.hpButtons.add(new ButtonEditPersona(
 								personaJson));
 						ProblemMatrixPanel.hpButtons
-								.add(new ListPersonaInterviewButton(persona));
+								.add(new ListPersonaInterviewButton());
 
 					} else {
 
