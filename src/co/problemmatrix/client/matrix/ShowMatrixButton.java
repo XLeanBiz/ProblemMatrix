@@ -17,7 +17,7 @@ public class ShowMatrixButton extends Button {
 
 				new UseTracking(this.getClass().getName());
 
-				ListMatrixInterviews.list();
+				ListProblemMatrixInterviews.list();
 			}
 		});
 	}

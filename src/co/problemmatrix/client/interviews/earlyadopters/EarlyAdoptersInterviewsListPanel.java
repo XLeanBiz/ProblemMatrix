@@ -4,6 +4,7 @@ import java.util.Date;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.interviews.earlyadopters.edit.EditEarlyAdoptersInterviewPage;
+import co.problemmatrix.client.matrix.CustomerNameLink;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -46,7 +47,9 @@ public class EarlyAdoptersInterviewsListPanel extends VerticalPanel {
 
 			HTML html = new HTML(dateString + "<a href=#><b>" + " "
 					+ customerName + "</b> (" + persona + ") - " + solution
-					+ " - " + earlyAdopterRate + "</a>");
+					+ " - <font "
+					+ CustomerNameLink.getRateColor(earlyAdopterRate) + ">"
+					+ earlyAdopterRate + "</font></a>");
 			html.addClickHandler(new ClickHandler() {
 
 				@Override

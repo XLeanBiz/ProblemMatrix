@@ -7,7 +7,7 @@ import co.problemmatrix.client.interviews.persona.customers.CustomerPersonaInter
 import co.problemmatrix.client.interviews.problems.customers.CustomerProblemInterviewPage;
 import co.problemmatrix.client.interviews.solution.ListSolutionInterviews;
 import co.problemmatrix.client.interviews.solution.customers.CustomerSolutionInterviewPage;
-import co.problemmatrix.client.matrix.ListMatrixInterviews;
+import co.problemmatrix.client.matrix.ListProblemMatrixInterviews;
 import co.problemmatrix.client.matrix.ProblemMatrixGeneric;
 import co.problemmatrix.client.persona.GetPersona;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginVerifyer;
@@ -122,7 +122,7 @@ public class InitializeApplication {
 
 		if (companyID != null) {
 
-			ListMatrixInterviews.list();
+			ListProblemMatrixInterviews.list();
 
 		} else {
 

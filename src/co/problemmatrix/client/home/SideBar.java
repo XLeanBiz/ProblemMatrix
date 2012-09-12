@@ -20,7 +20,7 @@ public class SideBar extends VerticalPanel {
 	public SideBar() {
 
 		this.setWidth("100%");
-		this.setSpacing(40);
+		this.setSpacing(50);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 

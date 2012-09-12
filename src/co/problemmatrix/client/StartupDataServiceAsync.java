@@ -7,7 +7,11 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface StartupDataServiceAsync {
 
-	void listMatrixInterviews(String company, AsyncCallback<String> callback);
+	void listProblemMatrixInterviews(String company,
+			AsyncCallback<String> callback);
+
+	void listSolutionMatrixInterviews(String company,
+			AsyncCallback<String> callback);
 
 	void getPersona(String name, AsyncCallback<String> callback);
 

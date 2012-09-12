@@ -2,7 +2,6 @@ package co.problemmatrix.client.matrix;
 
 import co.problemmatrix.client.StartupDataService;
 import co.problemmatrix.client.StartupDataServiceAsync;
-import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
@@ -11,7 +10,7 @@ import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class ListMatrixInterviews {
+public class ListProblemMatrixInterviews {
 
 	public static void list() {
 
@@ -24,7 +23,7 @@ public class ListMatrixInterviews {
 					.convertToString(UniqueIDGlobalVariables.companyUniqueID
 							.get("ID"));
 
-			custDevService.listMatrixInterviews(companyUniqueID,
+			custDevService.listProblemMatrixInterviews(companyUniqueID,
 					new AsyncCallback<String>() {
 
 						public void onFailure(final Throwable caught) {
@@ -38,11 +37,7 @@ public class ListMatrixInterviews {
 								JSONArray jsonArray = (JSONArray) JSONParser
 										.parseStrict(jsonResults);
 
-								ProblemMatrixPanel.vpMain.clear();
-								ProblemMatrixPanel.vpMain
-										.add(new CompanyProblemMatrix(jsonArray));
-
-								ProblemMatrixPanel.hpButtons.clear();
+								ListSolutionMatrixInterviews.list(jsonArray);
 							}
 						}
 					});

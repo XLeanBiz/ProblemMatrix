@@ -6,6 +6,7 @@ import co.problemmatrix.server.interviews.ListPersonaInterviews;
 import co.problemmatrix.server.interviews.ListProblemInterviews;
 import co.problemmatrix.server.interviews.ListProblemMatrixInterviews;
 import co.problemmatrix.server.interviews.ListSolutionInterviews;
+import co.problemmatrix.server.interviews.ListSolutionMatrixInterviews;
 import co.problemmatrix.server.interviews.SaveEarlyAdoptersInterview;
 import co.problemmatrix.server.interviews.SavePersonaInterview;
 import co.problemmatrix.server.interviews.SaveProblemInterview;
@@ -24,9 +25,14 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class StartupDataServiceImpl extends RemoteServiceServlet implements
 		StartupDataService {
 
-	public String listMatrixInterviews(final String company) {
+	public String listProblemMatrixInterviews(final String company) {
 
 		return ListProblemMatrixInterviews.list(company);
+	}
+
+	public String listSolutionMatrixInterviews(final String company) {
+
+		return ListSolutionMatrixInterviews.list(company);
 	}
 
 	public String listProblemInterviews(final String company) {
