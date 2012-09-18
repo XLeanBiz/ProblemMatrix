@@ -54,6 +54,9 @@ public class SaveEarlyAdoptersInterview {
 
 		parameters += URLUtilities.addSaveParameterText(interview,
 				"emailEarlyAdopter");
+		
+		parameters += URLUtilities.addSaveParameterText(interview,
+				"mustHaveFeatures");
 
 		parameters += URLUtilities.addSaveParameterText(interview,
 				"openComments");

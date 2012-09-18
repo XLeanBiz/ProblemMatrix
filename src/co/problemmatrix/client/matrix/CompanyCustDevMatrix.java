@@ -3,10 +3,15 @@ package co.problemmatrix.client.matrix;
 import java.util.ArrayList;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
+import co.problemmatrix.client.home.SideBar;
+import co.problemmatrix.client.interviews.earlyadopters.edit.EarlyAdoptersRateListbox;
 import co.problemmatrix.client.interviews.earlyadopters.edit.EditEarlyAdoptersInterviewPage;
 import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
+import co.problemmatrix.client.interviews.problems.edit.ProblemRateListbox;
 import co.problemmatrix.client.interviews.solution.edit.EditSolutionInterviewPage;
+import co.problemmatrix.client.interviews.solution.edit.SolutionRateListbox;
+import co.problemmatrix.client.metrics.MetricsPanel;
 import co.problemmatrix.client.utilities.UseTracking;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
@@ -20,6 +25,16 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CompanyCustDevMatrix extends FlexTable {
 
+	private int mustHaveProblemCount = 0;
+	private int mustHaveSolutionCount = 0;
+	private int earlyAdoptersCount = 0;
+
+	private ArrayList<String> personaList = new ArrayList<String>();
+	private ArrayList<String> problemsList = new ArrayList<String>();
+	private ArrayList<String> solutionsList = new ArrayList<String>();
+
+	private JSONArray[][] matrix = new JSONArray[20][20];
+
 	public CompanyCustDevMatrix(final JSONArray problemInterviews,
 			final JSONArray solutionInterviews) {
 
@@ -31,11 +46,18 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 		writePersonaLink(this);
 
-		ArrayList<String> personaList = new ArrayList<String>();
+		getSolutions(solutionInterviews);
 
-		ArrayList<String> problemsList = new ArrayList<String>();
+		getProblems(problemInterviews);
 
-		ArrayList<String> solutionsList = new ArrayList<String>();
+		writeInterviews();
+
+		SideBar.metricsPanel.clear();
+		SideBar.metricsPanel.add(new MetricsPanel(mustHaveProblemCount,
+				mustHaveSolutionCount, earlyAdoptersCount));
+	}
+
+	private void getSolutions(final JSONArray solutionInterviews) {
 
 		for (int i = 0; i < solutionInterviews.size(); i++) {
 
@@ -44,20 +66,28 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 			String persona = ConvertJson.getStringValue(solutionInterviewJson,
 					"persona");
-			if (persona == null) {
-				persona = "";
-			}
 
-			int personaColumn = getPersonaColumn(persona, personaList, this);
+			int personaColumn = getPersonaColumn(persona);
 
 			String solution = ConvertJson.convertToString(solutionInterviewJson
 					.get("solution"));
 
-			int solutionRow = getSolutionRow(solution, solutionsList, this);
+			int solutionRow = getSolutionRow(solution);
 
-			writeCustomerName(this, solutionRow, personaColumn,
-					solutionInterviewJson);
+			JSONArray interviewsArray = matrix[solutionRow][personaColumn];
+
+			if (interviewsArray == null) {
+
+				interviewsArray = new JSONArray();
+			}
+
+			interviewsArray.set(interviewsArray.size(), solutionInterviewJson);
+
+			matrix[solutionRow][personaColumn] = interviewsArray;
 		}
+	}
+
+	private void getProblems(final JSONArray problemInterviews) {
 
 		for (int i = 0; i < problemInterviews.size(); i++) {
 
@@ -66,22 +96,25 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 			String persona = ConvertJson.getStringValue(problemInterviewJson,
 					"persona");
-			if (persona == null) {
-				persona = "";
-			}
 
-			int personaColumn = getPersonaColumn(persona, personaList, this);
+			int personaColumn = getPersonaColumn(persona);
 
 			String problem = ConvertJson.convertToString(problemInterviewJson
 					.get("problem"));
 
-			int problemRow = getProblemRow(problem, problemsList, this,
-					solutionsList.size());
+			int problemRow = getProblemRow(problem, solutionsList.size());
 
-			writeCustomerName(this, problemRow + solutionsList.size(),
-					personaColumn, problemInterviewJson);
+			JSONArray interviewsArray = matrix[problemRow][personaColumn];
+
+			if (interviewsArray == null) {
+
+				interviewsArray = new JSONArray();
+			}
+
+			interviewsArray.set(interviewsArray.size(), problemInterviewJson);
+
+			matrix[problemRow][personaColumn] = interviewsArray;
 		}
-
 	}
 
 	private void writePersonaLink(FlexTable problemTable) {
@@ -102,136 +135,197 @@ public class CompanyCustDevMatrix extends FlexTable {
 		problemTable.setWidget(0, 0, personaTitle);
 	}
 
-	private int getPersonaColumn(String targetPersona,
-			ArrayList<String> personaList, FlexTable problemTable) {
+	private int getPersonaColumn(String targetPersona) {
 
-		int personaColumn = personaList.size() + 1;
+		if (targetPersona == null) {
 
-		for (int j = 0; j < personaList.size(); j++) {
-
-			String persona = personaList.get(j);
-
-			if (persona.equals(targetPersona)) {
-
-				personaColumn = j + 1;
-
-				break;
-			}
+			targetPersona = "";
 		}
 
-		if (personaColumn == personaList.size() + 1) {
+		int personaColumn = personaList.indexOf(targetPersona) + 1;
+
+		if (personaColumn == 0) {
 
 			personaList.add(targetPersona);
 
+			personaColumn = personaList.indexOf(targetPersona) + 1;
+
 			PersonaLink personaLink = new PersonaLink(targetPersona);
 
-			problemTable.setWidget(0, personaColumn, personaLink);
+			this.setWidget(0, personaColumn, personaLink);
 		}
 
 		return personaColumn;
 	}
 
-	private int getProblemRow(String targetProblem,
-			ArrayList<String> problemsList, FlexTable problemTable,
-			final int solutionsListSize) {
-
-		int problemRow = problemsList.size() + 1;
+	private int getProblemRow(String targetProblem, final int solutionsListSize) {
 
 		if (targetProblem == null) {
 
 			targetProblem = "";
 		}
 
-		for (int j = 0; j < problemsList.size(); j++) {
+		int problemRow = problemsList.indexOf(targetProblem) + 1;
 
-			String problem = problemsList.get(j);
-
-			if (problem.equals(targetProblem)) {
-
-				problemRow = j + 1;
-
-				break;
-			}
-		}
-
-		if (problemRow == problemsList.size() + 1) {
+		if (problemRow == 0) {
 
 			problemsList.add(targetProblem);
 
-			problemTable.setHTML(solutionsListSize + problemRow, 0, "<b>"
-					+ targetProblem
-					+ "</b><br><font color=gray size=1>Problem</font>");
+			problemRow = problemsList.indexOf(targetProblem) + 1;
 		}
+
+		problemRow += solutionsListSize;
+
+		this.setHTML(problemRow, 0, "<b>" + targetProblem
+				+ "</b><br><font color=gray size=1>Problem</font>");
 
 		return problemRow;
 	}
 
-	private int getSolutionRow(String targetSolution,
-			ArrayList<String> solutionsList, FlexTable table) {
+	private int getSolutionRow(String targetSolution) {
 
-		int solutionRow = solutionsList.size() + 1;
+		int solutionRow = solutionsList.indexOf(targetSolution) + 1;
 
 		if (targetSolution == null) {
 
 			targetSolution = "";
 		}
 
-		for (int j = 0; j < solutionsList.size(); j++) {
-
-			String solution = solutionsList.get(j);
-
-			if (solution.equals(targetSolution)) {
-
-				solutionRow = j + 1;
-
-				break;
-			}
-		}
-
-		if (solutionRow == solutionsList.size() + 1) {
+		if (solutionRow == 0) {
 
 			solutionsList.add(targetSolution);
 
-			table.setHTML(solutionRow, 0, "<b>" + targetSolution
+			solutionRow = solutionsList.indexOf(targetSolution) + 1;
+
+			this.setHTML(solutionRow, 0, "<b>" + targetSolution
 					+ "</b><br><font color=gray size=1>Solution</font>");
 		}
 
 		return solutionRow;
 	}
 
-	private void writeCustomerName(FlexTable table, int row,
-			final int personaColumn, final JSONObject interviewJson) {
+	int problemRateCount = 0;
+	int solutionRateCount = 0;
+	int earlyAdopterRateCount = 0;
 
-		VerticalPanel customersList = new VerticalPanel();
+	private void writeInterviews() {
 
-		String customerName = ConvertJson.getStringValue(interviewJson,
-				"customerName");
+		int row = 0;
+		int column = 0;
 
-		String rate = ConvertJson.getStringValue(interviewJson, "problemRate");
-		if (rate == null) {
+		for (JSONArray[] rowInterviewsJson : matrix) {
 
-			rate = ConvertJson.getStringValue(interviewJson, "solutionRate");
-		}
-		if (rate == null) {
+			for (JSONArray cellInterviewsJson : rowInterviewsJson) {
 
-			rate = ConvertJson
-					.getStringValue(interviewJson, "earlyAdopterRate");
-		}
+				if (cellInterviewsJson != null) {
 
-		try {
+					VerticalPanel vpCustomers = new VerticalPanel();
 
-			customersList = (VerticalPanel) table.getWidget(row, personaColumn);
+					for (int i = 0; i < cellInterviewsJson.size(); i++) {
 
-			if (customersList == null) {
+						JSONObject interviewJson = (JSONObject) cellInterviewsJson
+								.get(i);
 
-				customersList = new VerticalPanel();
+						String customerName = ConvertJson.getStringValue(
+								interviewJson, "customerName");
+
+						String rate = getRate(interviewJson);
+
+						CustomerNameLink customerLink = getCustomerNameLink(
+								customerName, rate, interviewJson);
+
+						vpCustomers.add(customerLink);
+					}
+
+					this.setWidget(row, column, vpCustomers);
+				}
+				
+				column++;
 			}
 
-		} catch (Exception e) {
+			verifyMetrics();
+			row++;
+			column = 0;
+		}
+	}
 
+	private void verifyMetrics() {
+
+		if (problemRateCount > mustHaveProblemCount) {
+
+			mustHaveProblemCount = problemRateCount;
 		}
 
-		CustomerNameLink customerLink = new CustomerNameLink(customerName, rate);
+		if (solutionRateCount > mustHaveSolutionCount) {
+
+			mustHaveSolutionCount = solutionRateCount;
+		}
+
+		if (earlyAdopterRateCount > earlyAdoptersCount) {
+
+			earlyAdoptersCount = earlyAdopterRateCount;
+		}
+
+		problemRateCount = 0;
+		solutionRateCount = 0;
+		earlyAdopterRateCount = 0;
+	}
+
+	public static void showCustDevMatrix(final JSONArray problemInterviews,
+			final JSONArray solutionInterviews) {
+
+		ProblemMatrixPanel.vpMain.clear();
+		ProblemMatrixPanel.vpMain.add(new CompanyCustDevMatrix(
+				problemInterviews, solutionInterviews));
+
+		ProblemMatrixPanel.hpButtons.clear();
+	}
+
+	private String getRate(final JSONObject interviewJson) {
+
+		String rate = ConvertJson.getStringValue(interviewJson, "problemRate");
+
+		if (rate != null) {
+
+			if (ProblemRateListbox.MUST_HAVE.equals(rate)) {
+
+				problemRateCount++;
+			}
+
+		} else {
+
+			rate = ConvertJson.getStringValue(interviewJson, "solutionRate");
+
+			if (rate != null) {
+
+				if (SolutionRateListbox.MUST_HAVE.equals(rate)) {
+
+					solutionRateCount++;
+				}
+
+			} else {
+
+				rate = ConvertJson.getStringValue(interviewJson,
+						"earlyAdopterRate");
+
+				if (rate != null) {
+
+					if (EarlyAdoptersRateListbox.WANT_NOW.equals(rate)) {
+
+						earlyAdopterRateCount++;
+					}
+				}
+			}
+		}
+
+		return rate;
+	}
+
+	private CustomerNameLink getCustomerNameLink(final String customerName,
+			final String rate, final JSONObject interviewJson) {
+
+		final CustomerNameLink customerLink = new CustomerNameLink(
+				customerName, rate);
 		customerLink.addClickHandler(new ClickHandler() {
 
 			@Override
@@ -277,18 +371,6 @@ public class CompanyCustDevMatrix extends FlexTable {
 			}
 		});
 
-		customersList.add(customerLink);
-
-		table.setWidget(row, personaColumn, customersList);
-	}
-
-	public static void showCustDevMatrix(final JSONArray problemInterviews,
-			final JSONArray solutionInterviews) {
-
-		ProblemMatrixPanel.vpMain.clear();
-		ProblemMatrixPanel.vpMain.add(new CompanyCustDevMatrix(
-				problemInterviews, solutionInterviews));
-
-		ProblemMatrixPanel.hpButtons.clear();
+		return customerLink;
 	}
 }

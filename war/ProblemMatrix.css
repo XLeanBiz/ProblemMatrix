@@ -28,6 +28,14 @@ p {
   background-color: #fff;
 }
 
+.metricBarGray {
+  background-color: gray;
+}
+
+.metricBarBlue {
+  background-color: blue;
+}
+
 #text {
   font-size: 24pt;
   text-align: center;

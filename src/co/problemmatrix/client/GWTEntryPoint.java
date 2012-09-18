@@ -9,6 +9,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window.Location;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -27,6 +28,8 @@ public class GWTEntryPoint implements EntryPoint {
 		RootPanel.get("main").clear();
 		RootPanel.get("main").setWidth("100%");
 		VerticalPanel vpMain = new VerticalPanel();
+		vpMain.setSize("100%", "100%");
+		vpMain.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		RootPanel.get("main").add(vpMain, 0, 0);
 
 		String uniqueID = EncryptText.decrypt(Cookies.getCookie("UniqueID"));

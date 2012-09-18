@@ -7,6 +7,9 @@ import co.uniqueid.authentication.client.utilities.ConvertJson;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
@@ -26,6 +29,18 @@ public class CompanyField extends HorizontalPanel {
 		companyField.setValue(companyID);
 		this.add(FormField.getFormField("<b>Company</b>", companyField));
 		companyField.setWidth("200px");
+
+		companyField.addKeyDownHandler(new KeyDownHandler() {
+
+			@Override
+			public void onKeyDown(KeyDownEvent event) {
+				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+
+					Window.Location.assign(GWT.getHostPageBaseURL()
+							+ "?company=" + companyField.getValue());
+				}
+			}
+		});
 
 		Button enter = new Button("Enter");
 

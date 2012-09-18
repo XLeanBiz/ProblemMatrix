@@ -1,5 +1,8 @@
 package co.problemmatrix.client.matrix;
 
+import co.problemmatrix.client.home.SideBar;
+import co.problemmatrix.client.metrics.MetricsPanel;
+
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 
@@ -13,8 +16,8 @@ public class ProblemMatrixGeneric extends FlexTable {
 		setStyleName("flextable");
 
 		HTML persona = new HTML("<center><b><font color=gray>"
-				+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "PROBLEM x PERSONA"
-				+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+				+ "&nbsp;&nbsp;&nbsp;&nbsp;" + "PROBLEM x PERSONA"
+				+ "&nbsp;&nbsp;&nbsp;&nbsp;"
 				+ "</font></b></center>");
 		setWidget(0, 0, persona);
 
@@ -36,25 +39,25 @@ public class ProblemMatrixGeneric extends FlexTable {
 
 		HTML segment1 = new HTML(
 				"<center><b>"
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 						+ "Customer"
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 						+ "<br><font color=blue>SEGMENT</font><br>1</b></center>");
 		setWidget(0, 1, segment1);
 
 		HTML segment2 = new HTML(
 				"<center><b>"
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 						+ "Customer"
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 						+ "<br><font color=blue>SEGMENT</font><br>2</b></center>");
 		setWidget(0, 2, segment2);
 
 		HTML segment3 = new HTML(
 				"<center><b>"
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 						+ "Customer"
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 						+ "<br><font color=blue>SEGMENT</font><br>3</b></center>");
 		setWidget(0, 3, segment3);
 
@@ -71,5 +74,7 @@ public class ProblemMatrixGeneric extends FlexTable {
 		setText(4, 2, "");
 		setText(4, 3, "");
 
+		SideBar.metricsPanel.clear();
+		SideBar.metricsPanel.add(new MetricsPanel(0, 0, 0));
 	}
 }

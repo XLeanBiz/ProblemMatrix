@@ -4,6 +4,7 @@ import java.util.Date;
 
 import co.problemmatrix.client.home.ProblemMatrixPanel;
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
+import co.problemmatrix.client.matrix.CustomerNameLink;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -48,7 +49,10 @@ public class ProblemsInterviewsListPanel extends VerticalPanel {
 
 				HTML html = new HTML(dateString + "<a href=#><b>" + " "
 						+ customerName + "</b> (" + persona + ") - " + problem
-						+ " - " + problemRate + "</a>");
+						+ " - <font "
+						+ CustomerNameLink.getRateColor(problemRate) + ">"
+						+ problemRate + "</font></a>");
+				
 				html.addClickHandler(new ClickHandler() {
 
 					@Override

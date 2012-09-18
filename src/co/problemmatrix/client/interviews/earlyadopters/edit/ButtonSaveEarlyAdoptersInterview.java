@@ -96,6 +96,10 @@ public class ButtonSaveEarlyAdoptersInterview extends Button {
 		ConvertJson.setStringValue(EditEarlyAdoptersInterviewPage.interview,
 				EditEarlyAdoptersInterviewQuestions.emailEarlyAdopter
 						.getValue(), "emailEarlyAdopter");
+		
+		ConvertJson.setStringValue(EditEarlyAdoptersInterviewPage.interview,
+				EditEarlyAdoptersInterviewQuestions.mustHaveFeatures.getHTML(),
+				"mustHaveFeatures");
 
 		ConvertJson.setStringValue(EditEarlyAdoptersInterviewPage.interview,
 				EditEarlyAdoptersInterviewQuestions.openComments.getHTML(),

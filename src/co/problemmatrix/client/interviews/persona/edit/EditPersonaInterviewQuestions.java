@@ -48,7 +48,7 @@ public class EditPersonaInterviewQuestions extends VerticalPanel {
 
 			routine.addClickHandler(getClickHandler());
 			this.add(FormField.getVerticalFormField(
-					"How is <b>your routine</b> as " + personaName + "?",
+					"What are your <b>main activities</b> as " + personaName + "?",
 					routine));
 			routine.setSize("500px", "80px");
 		}

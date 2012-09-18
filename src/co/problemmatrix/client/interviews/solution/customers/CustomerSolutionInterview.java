@@ -5,6 +5,7 @@ import co.problemmatrix.client.interviews.solution.edit.EditSolutionInterview;
 import co.problemmatrix.client.interviews.solution.edit.EditSolutionInterviewPage;
 import co.problemmatrix.client.interviews.solution.edit.EditSolutionInterviewQuestions;
 import co.problemmatrix.client.utilities.FormField;
+import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -18,6 +19,13 @@ public class CustomerSolutionInterview extends VerticalPanel {
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 
+		String company = ConvertJson
+				.convertToString(UniqueIDGlobalVariables.companyUniqueID
+						.get("ID"));
+		ConvertJson.setStringValue(EditSolutionInterviewPage.interview,
+				company, "company");
+		EditSolutionInterview.companyField.setValue(company);
+
 		String customerName = ConvertJson
 				.convertToString(EditSolutionInterviewPage.interview
 						.get("customerName"));
@@ -25,7 +33,7 @@ public class CustomerSolutionInterview extends VerticalPanel {
 		EditSolutionInterview.customerNameField
 				.addClickHandler(EditSolutionInterviewQuestions
 						.getClickHandler());
-		this.add(FormField.getFormField("Your Name",
+		this.add(FormField.getFormField("Customer's Name",
 				EditSolutionInterview.customerNameField));
 		EditProblemInterview.customerNameField.setWidth("300px");
 

@@ -17,23 +17,33 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class SideBar extends VerticalPanel {
 
+	public static VerticalPanel metricsPanel = new VerticalPanel();
+
 	public SideBar() {
 
 		this.setWidth("100%");
-		this.setSpacing(50);
+		this.setSpacing(10);
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 
 		String company = ConvertJson.getStringValue(
 				UniqueIDGlobalVariables.companyUniqueID, "ID");
 
-		this.add(personaLinks(company));
+		VerticalPanel vp = new VerticalPanel();
+		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+		vp.setSpacing(30);
 
-		this.add(problemsLinks(company));
+		vp.add(personaLinks(company));
 
-		this.add(solutionsLinks(company));
+		vp.add(problemsLinks(company));
 
-		this.add(earlyAdoptersLinks(company));
+		vp.add(solutionsLinks(company));
+
+		vp.add(earlyAdoptersLinks(company));
+
+		this.add(vp);
+
+		this.add(metricsPanel);
 	}
 
 	private VerticalPanel personaLinks(final String company) {
@@ -147,7 +157,7 @@ public class SideBar extends VerticalPanel {
 						+ GWT.getHostPageBaseURL()
 						+ "?company="
 						+ company
-						+ "&SolutionInterview=Your Value Proposition  Here' target='_blank'>"
+						+ "&SolutionInterview=Your Solution Here' target='_blank'>"
 						+ "<img src=images/CustomerIcon.jpg alt='Add Interview' height='20px' >");
 		hpIcons.add(customerInterviewLink);
 

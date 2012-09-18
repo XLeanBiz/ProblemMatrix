@@ -22,6 +22,8 @@ public class EditEarlyAdoptersInterviewQuestions extends VerticalPanel {
 
 	public static TextBox emailEarlyAdopter = new TextBox();
 
+	public static RichTextArea mustHaveFeatures = new RichTextArea();
+
 	public static RichTextArea openComments = new RichTextArea();
 
 	public EditEarlyAdoptersInterviewQuestions(JSONObject interview,
@@ -42,9 +44,10 @@ public class EditEarlyAdoptersInterviewQuestions extends VerticalPanel {
 				EditEarlyAdoptersInterviewPage.interview, "earlyAdopterRate");
 		earlyAdopterRateField = new EarlyAdoptersRateListbox(earlyAdopterRate);
 		earlyAdopterRateField.addClickHandler(getClickHandler());
-		this.add(FormField.getVerticalFormField(
-				"Would you like to be an <b>Early Adopter</b> for this solution?",
-				earlyAdopterRateField));
+		this.add(FormField
+				.getVerticalFormField(
+						"Would you like to be an <b>Early Adopter</b> for this solution?",
+						earlyAdopterRateField));
 
 		String whyEarlyAdopterValue = ConvertJson.getStringValue(
 				EditEarlyAdoptersInterviewPage.interview, "whyEarlyAdopter");
@@ -72,6 +75,16 @@ public class EditEarlyAdoptersInterviewQuestions extends VerticalPanel {
 						"If Yes, when can we have the first <b>three meetings</b> about this solution?",
 						threeMeetings));
 		threeMeetings.setSize("500px", "80px");
+
+		String mustHaveFeaturesValue = ConvertJson.getStringValue(
+				EditEarlyAdoptersInterviewPage.interview, "mustHaveFeatures");
+		mustHaveFeatures.setHTML(mustHaveFeaturesValue);
+		mustHaveFeatures.addClickHandler(getClickHandler());
+		this.add(FormField
+				.getVerticalFormField(
+						"If Yes, what <b>part</b>(s) of this solution is a MUST HAVE for you?",
+						mustHaveFeatures));
+		mustHaveFeatures.setSize("500px", "80px");
 
 		String openCommentsValue = ConvertJson
 				.convertToString(EditEarlyAdoptersInterviewPage.interview

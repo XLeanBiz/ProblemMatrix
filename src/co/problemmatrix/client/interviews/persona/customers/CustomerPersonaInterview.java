@@ -4,6 +4,7 @@ import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterview;
 import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
 import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewQuestions;
 import co.problemmatrix.client.utilities.FormField;
+import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -18,6 +19,13 @@ public class CustomerPersonaInterview extends VerticalPanel {
 
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 
+		String company = ConvertJson
+				.convertToString(UniqueIDGlobalVariables.companyUniqueID
+						.get("ID"));
+		ConvertJson.setStringValue(EditPersonaInterviewPage.interview, company,
+				"company");
+		EditPersonaInterview.companyField.setValue(company);
+
 		String customerName = ConvertJson
 				.convertToString(EditPersonaInterviewPage.interview
 						.get("customerName"));
@@ -25,7 +33,7 @@ public class CustomerPersonaInterview extends VerticalPanel {
 		EditPersonaInterview.customerNameField
 				.addClickHandler(EditPersonaInterviewQuestions
 						.getClickHandler());
-		this.add(FormField.getFormField("Your Name",
+		this.add(FormField.getFormField("Customer's Name",
 				EditPersonaInterview.customerNameField));
 		EditPersonaInterview.customerNameField.setWidth("300px");
 
