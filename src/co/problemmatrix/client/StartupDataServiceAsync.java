@@ -35,4 +35,10 @@ public interface StartupDataServiceAsync {
 
 	void saveEarlyAdoptersInterview(String interview,
 			AsyncCallback<String> callback);
+
+	void listSatisfactionInterviews(String solutionName,
+			AsyncCallback<String> callback);
+
+	void saveSatisfactionInterview(String interview,
+			AsyncCallback<String> callback);
 }

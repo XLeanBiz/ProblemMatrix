@@ -9,11 +9,6 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class ListSolutionMatrixInterviews {
 
-	// http://jsonpfy.startupsdata.appspot.com/ListDataService
-	// ?kind=Interviews
-	// &filterField=company&filterValue=
-	// &sortField=datetime&sortDirection=desc
-
 	private static String listUrl = "https://jsonpfy.startupsdata.appspot.com/ListDataService";
 
 	public static String list(final String company) {
@@ -38,6 +33,20 @@ public class ListSolutionMatrixInterviews {
 						.getJSONObject(i);
 
 				solutionsInterviewsJson.put(earlyAdopterInterviewJson);
+
+			}
+
+			String satisfactionInterviewsJsonString = listSatisfactionInterviews(company);
+
+			JSONArray satisfactionInterviewsJson = new JSONArray(
+					satisfactionInterviewsJsonString);
+
+			for (int i = 0; i < satisfactionInterviewsJson.length(); i++) {
+
+				JSONObject satisfactionInterviewJson = satisfactionInterviewsJson
+						.getJSONObject(i);
+
+				solutionsInterviewsJson.put(satisfactionInterviewJson);
 
 			}
 
@@ -66,6 +75,18 @@ public class ListSolutionMatrixInterviews {
 	private static String listEarlyAdoptersInterviews(final String company) {
 
 		String parameters = "kind=EarlyAdoptersInterviews";
+
+		parameters += "&filterField=company&filterValue=" + company;
+
+		final String jsonString = URLUtilities.fetchURLPost(listUrl, parameters
+				+ EncryptText.getAuthParameter());
+
+		return jsonString;
+	}
+
+	private static String listSatisfactionInterviews(final String company) {
+
+		String parameters = "kind=SatisfactionInterviews";
 
 		parameters += "&filterField=company&filterValue=" + company;
 

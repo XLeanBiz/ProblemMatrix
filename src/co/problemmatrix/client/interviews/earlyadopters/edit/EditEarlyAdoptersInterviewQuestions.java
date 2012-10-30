@@ -82,7 +82,7 @@ public class EditEarlyAdoptersInterviewQuestions extends VerticalPanel {
 		mustHaveFeatures.addClickHandler(getClickHandler());
 		this.add(FormField
 				.getVerticalFormField(
-						"If Yes, what <b>part</b>(s) of this solution is a MUST HAVE for you?",
+						"What <b>part</b>(s) of this solution would you pay for? How much?",
 						mustHaveFeatures));
 		mustHaveFeatures.setSize("500px", "80px");
 

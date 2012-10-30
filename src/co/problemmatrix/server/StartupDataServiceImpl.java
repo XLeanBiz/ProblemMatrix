@@ -5,11 +5,13 @@ import co.problemmatrix.server.interviews.ListEarlyAdoptersInterviews;
 import co.problemmatrix.server.interviews.ListPersonaInterviews;
 import co.problemmatrix.server.interviews.ListProblemInterviews;
 import co.problemmatrix.server.interviews.ListProblemMatrixInterviews;
+import co.problemmatrix.server.interviews.ListSatisfactionInterviews;
 import co.problemmatrix.server.interviews.ListSolutionInterviews;
 import co.problemmatrix.server.interviews.ListSolutionMatrixInterviews;
 import co.problemmatrix.server.interviews.SaveEarlyAdoptersInterview;
 import co.problemmatrix.server.interviews.SavePersonaInterview;
 import co.problemmatrix.server.interviews.SaveProblemInterview;
+import co.problemmatrix.server.interviews.SaveSatisfactionInterview;
 import co.problemmatrix.server.interviews.SaveSolutionInterview;
 import co.problemmatrix.server.persona.GetPersona;
 import co.problemmatrix.server.persona.SavePersona;
@@ -130,6 +132,27 @@ public class StartupDataServiceImpl extends RemoteServiceServlet implements
 			json = new JSONObject(interview);
 
 			return SaveEarlyAdoptersInterview.save(json);
+
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	public String listSatisfactionInterviews(final String solutionName) {
+
+		return ListSatisfactionInterviews.list(solutionName);
+	}
+
+	public String saveSatisfactionInterview(final String interview) {
+
+		JSONObject json;
+		try {
+			json = new JSONObject(interview);
+
+			return SaveSatisfactionInterview.save(json);
 
 		} catch (JSONException e) {
 

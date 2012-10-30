@@ -27,7 +27,7 @@ public class MetricsPanel extends VerticalPanel {
 		hp.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
 		HTML title = new HTML("Must Have <b>Problem</b>: ");
-		title.setWidth("130px");
+		title.setWidth("135px");
 		title.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		hp.add(title);
 
@@ -53,7 +53,7 @@ public class MetricsPanel extends VerticalPanel {
 		hp.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
 		HTML title = new HTML("Must Have <b>Solution</b>: ");
-		title.setWidth("130px");
+		title.setWidth("135px");
 		title.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		hp.add(title);
 
@@ -79,7 +79,7 @@ public class MetricsPanel extends VerticalPanel {
 		hp.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
 		HTML title = new HTML("<b>Early Adopters</b>: ");
-		title.setWidth("130px");
+		title.setWidth("135px");
 		title.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		hp.add(title);
 

@@ -9,6 +9,7 @@ import co.problemmatrix.client.interviews.earlyadopters.edit.EditEarlyAdoptersIn
 import co.problemmatrix.client.interviews.persona.edit.EditPersonaInterviewPage;
 import co.problemmatrix.client.interviews.problems.edit.EditProblemInterviewPage;
 import co.problemmatrix.client.interviews.problems.edit.ProblemRateListbox;
+import co.problemmatrix.client.interviews.satisfaction.edit.EditSatisfactionInterviewPage;
 import co.problemmatrix.client.interviews.solution.edit.EditSolutionInterviewPage;
 import co.problemmatrix.client.interviews.solution.edit.SolutionRateListbox;
 import co.problemmatrix.client.metrics.MetricsPanel;
@@ -71,6 +72,12 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 			String solution = ConvertJson.convertToString(solutionInterviewJson
 					.get("solution"));
+
+			if (solution == null) {
+
+				solution = ConvertJson.convertToString(solutionInterviewJson
+						.get("feature"));
+			}
 
 			int solutionRow = getSolutionRow(solution);
 
@@ -239,7 +246,7 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 					this.setWidget(row, column, vpCustomers);
 				}
-				
+
 				column++;
 			}
 
@@ -314,6 +321,10 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 						earlyAdopterRateCount++;
 					}
+				} else {
+
+					rate = ConvertJson.getStringValue(interviewJson,
+							"satisfactionRate");
 				}
 			}
 		}
@@ -336,6 +347,9 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 				String solution = ConvertJson.getStringValue(interviewJson,
 						"solution");
+
+				String feature = ConvertJson.getStringValue(interviewJson,
+						"feature");
 
 				ProblemMatrixPanel.vpMain.clear();
 
@@ -360,6 +374,11 @@ public class CompanyCustDevMatrix extends FlexTable {
 								.add(new EditSolutionInterviewPage(
 										interviewJson));
 					}
+				} else if (feature != null) {
+
+					ProblemMatrixPanel.vpMain
+							.add(new EditSatisfactionInterviewPage(
+									interviewJson));
 				} else {
 
 					ProblemMatrixPanel.vpMain.add(new EditProblemInterviewPage(

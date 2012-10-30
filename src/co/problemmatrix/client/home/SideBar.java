@@ -3,6 +3,7 @@ package co.problemmatrix.client.home;
 import co.problemmatrix.client.interviews.earlyadopters.ListEarlyAdoptersInterviews;
 import co.problemmatrix.client.interviews.persona.ListPersonaInterviews;
 import co.problemmatrix.client.interviews.problems.ListProblemsInterviews;
+import co.problemmatrix.client.interviews.satisfaction.ListSatisfactionInterviews;
 import co.problemmatrix.client.interviews.solution.ListSolutionInterviews;
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
@@ -40,6 +41,8 @@ public class SideBar extends VerticalPanel {
 		vp.add(solutionsLinks(company));
 
 		vp.add(earlyAdoptersLinks(company));
+
+		vp.add(satisfactionLinks(company));
 
 		this.add(vp);
 
@@ -198,6 +201,46 @@ public class SideBar extends VerticalPanel {
 						+ "?company="
 						+ company
 						+ "&EarlyAdopterInterview=Your Solution Here' target='_blank'>"
+						+ "<img src=images/CustomerIcon.jpg alt='Add Interview' height='20px' >");
+		hpIcons.add(customerInterviewLink);
+
+		vp.add(hpIcons);
+
+		return vp;
+	}
+
+	private VerticalPanel satisfactionLinks(final String company) {
+
+		VerticalPanel vp = new VerticalPanel();
+
+		vp.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+
+		HTML titleLink = new HTML("<b>Satisfaction</b>");
+
+		vp.add(titleLink);
+
+		HorizontalPanel hpIcons = new HorizontalPanel();
+
+		hpIcons.setSpacing(5);
+
+		HTML listInterviewsLink = new HTML(
+				"<a href=#><img src=images/listIcon.jpg alt='List Interviews' height='20px' ></a>");
+		listInterviewsLink.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				ListSatisfactionInterviews.list();
+			}
+		});
+		hpIcons.add(listInterviewsLink);
+
+		HTML customerInterviewLink = new HTML(
+				"<a href='"
+						+ GWT.getHostPageBaseURL()
+						+ "?company="
+						+ company
+						+ "&SatisfactionInterview=Your Solution Here' target='_blank'>"
 						+ "<img src=images/CustomerIcon.jpg alt='Add Interview' height='20px' >");
 		hpIcons.add(customerInterviewLink);
 

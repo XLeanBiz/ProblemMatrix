@@ -1,4 +1,4 @@
-package co.problemmatrix.client.interviews.persona.edit;
+package co.problemmatrix.client.interviews.satisfaction.edit;
 
 import java.util.Date;
 
@@ -9,12 +9,11 @@ import co.uniqueid.authentication.client.utilities.ConvertJson;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.RichTextArea;
-import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class EditPersonaInterview extends VerticalPanel {
+public class EditSatisfactionInterview extends VerticalPanel {
 
 	public static TextBox companyField = new TextBox();
 
@@ -32,9 +31,7 @@ public class EditPersonaInterview extends VerticalPanel {
 
 	public static RichTextArea notes = new RichTextArea();
 
-	public static TextArea problems = new TextArea();
-
-	public EditPersonaInterview(JSONObject interview) {
+	public EditSatisfactionInterview(JSONObject interview) {
 
 		this.setSpacing(20);
 
@@ -112,13 +109,6 @@ public class EditPersonaInterview extends VerticalPanel {
 		videoURLField.setValue(videoURLValue);
 		this.add(FormField.getFormField("Video URL", videoURLField));
 		videoURLField.setWidth("300px");
-
-		String problemsValue = ConvertJson.convertToString(interview
-				.get("problems"));
-		problems.setText(problemsValue);
-		this.add(FormField.getFormField("Main Problems<br>(comma separated)",
-				problems));
-		problems.setSize("300px", "60px");
 
 		String notesValue = ConvertJson.convertToString(interview.get("notes"));
 		notes.setHTML(notesValue);

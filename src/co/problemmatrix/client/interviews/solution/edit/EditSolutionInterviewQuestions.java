@@ -53,12 +53,9 @@ public class EditSolutionInterviewQuestions extends VerticalPanel {
 				EditSolutionInterviewPage.interview, "solutionRate");
 		solutionRateField = new SolutionRateListbox(solutionRate);
 
-		if (!shortInterview) {
-
 			solutionRateField.addClickHandler(getClickHandler());
 			this.add(FormField.getVerticalFormField(
 					"How do you <b>rate</b> this solution?", solutionRateField));
-		}
 
 		String whyHaveSolutionValue = ConvertJson.getStringValue(
 				EditSolutionInterviewPage.interview, "whyHaveSolution");
@@ -91,7 +88,7 @@ public class EditSolutionInterviewQuestions extends VerticalPanel {
 		howTryingSolution.addClickHandler(getClickHandler());
 		this.add(FormField
 				.getVerticalFormField(
-						"How do you like to start <b>trying</b> this solution, if you do?",
+						"How would you like to start <b>trying</b> this solution?",
 						howTryingSolution));
 		howTryingSolution.setSize("500px", "80px");
 

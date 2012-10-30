@@ -32,4 +32,8 @@ public interface StartupDataService extends RemoteService {
 	String listEarlyAdoptersInterviews(String solutionName);
 
 	String saveEarlyAdoptersInterview(String interview);
+	
+	String listSatisfactionInterviews(String solutionName);
+
+	String saveSatisfactionInterview(String interview);
 }

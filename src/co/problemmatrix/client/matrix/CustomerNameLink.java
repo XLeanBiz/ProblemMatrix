@@ -2,6 +2,7 @@ package co.problemmatrix.client.matrix;
 
 import co.problemmatrix.client.interviews.earlyadopters.edit.EarlyAdoptersRateListbox;
 import co.problemmatrix.client.interviews.problems.edit.ProblemRateListbox;
+import co.problemmatrix.client.interviews.satisfaction.edit.SatisfactionRateListbox;
 import co.problemmatrix.client.interviews.solution.edit.SolutionRateListbox;
 
 import com.google.gwt.user.client.ui.HTML;
@@ -39,11 +40,13 @@ public class CustomerNameLink extends HTML {
 
 			rateColor = "orange";
 
-		} else if (ProblemRateListbox.DONT_CARE.equals(rate)) {
+		} else if (ProblemRateListbox.DONT_CARE.equals(rate)
+				|| SatisfactionRateListbox.LIKE_PART.equals(rate)) {
 
 			rateColor = "blue";
 
-		} else if (ProblemRateListbox.DONT_NEED.equals(rate)) {
+		} else if (ProblemRateListbox.DONT_NEED.equals(rate)
+				|| SatisfactionRateListbox.DONT_LIKE.equals(rate)) {
 
 			rateColor = "gray";
 

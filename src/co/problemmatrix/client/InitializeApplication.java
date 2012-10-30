@@ -5,6 +5,7 @@ import co.problemmatrix.client.interviews.earlyadopters.ListEarlyAdoptersIntervi
 import co.problemmatrix.client.interviews.earlyadopters.customers.CustomerEarlyAdoptersInterviewPage;
 import co.problemmatrix.client.interviews.persona.customers.CustomerPersonaInterviewPage;
 import co.problemmatrix.client.interviews.problems.customers.CustomerProblemInterviewPage;
+import co.problemmatrix.client.interviews.satisfaction.customers.CustomerSatisfactionInterviewPage;
 import co.problemmatrix.client.interviews.solution.ListSolutionInterviews;
 import co.problemmatrix.client.interviews.solution.customers.CustomerSolutionInterviewPage;
 import co.problemmatrix.client.matrix.ListProblemMatrixInterviews;
@@ -51,6 +52,12 @@ public class InitializeApplication {
 		final String earlyAdoptersInterview = Location
 				.getParameter("EarlyAdopterInterview");
 
+		final String satisfactionInterview = Location
+				.getParameter("SatisfactionInterview");
+
+		final String satisfactionShortInterview = Location
+				.getParameter("SatisfactionShortInterview");
+
 		if (!(problemInterview == null || "null".equals(problemInterview))) {
 
 			vpMain.add(new CustomerProblemInterviewPage(problemInterview, false));
@@ -78,6 +85,18 @@ public class InitializeApplication {
 
 			vpMain.add(new CustomerEarlyAdoptersInterviewPage(
 					earlyAdoptersInterview, false));
+
+		} else if (!(satisfactionInterview == null || "null"
+				.equals(satisfactionInterview))) {
+
+			vpMain.add(new CustomerSatisfactionInterviewPage(
+					satisfactionInterview, false));
+
+		} else if (!(satisfactionShortInterview == null || "null"
+				.equals(satisfactionShortInterview))) {
+
+			vpMain.add(new CustomerSatisfactionInterviewPage(
+					satisfactionShortInterview, true));
 
 		} else if (!(personaInterview == null || "null"
 				.equals(personaInterview))) {

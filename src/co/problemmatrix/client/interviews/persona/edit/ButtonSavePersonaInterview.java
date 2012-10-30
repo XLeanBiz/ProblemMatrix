@@ -64,7 +64,7 @@ public class ButtonSavePersonaInterview extends Button {
 				EditPersonaInterview.videoURLField.getValue(), "videoURL");
 
 		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
-				EditPersonaInterview.problems.getHTML(), "problems");
+				EditPersonaInterview.problems.getText(), "problems");
 
 		ConvertJson.setStringValue(EditPersonaInterviewPage.interview,
 				EditPersonaInterview.notes.getHTML(), "notes");
