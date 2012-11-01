@@ -45,13 +45,15 @@ public class CompanyCustDevMatrix extends FlexTable {
 		this.setCellPadding(20);
 		this.setStyleName("flextable");
 
-		writePersonaLink(this);
+		writeCornerLink(this);
 
 		getSolutions(solutionInterviews);
 
 		getProblems(problemInterviews);
 
 		writeInterviews();
+
+		writeBlanks(this);
 
 		SideBar.metricsPanel.clear();
 		SideBar.metricsPanel.add(new MetricsPanel(mustHaveProblemCount,
@@ -73,13 +75,16 @@ public class CompanyCustDevMatrix extends FlexTable {
 			String solution = ConvertJson.convertToString(solutionInterviewJson
 					.get("solution"));
 
+			boolean isFeature = false;
 			if (solution == null) {
 
 				solution = ConvertJson.convertToString(solutionInterviewJson
 						.get("feature"));
+
+				isFeature = true;
 			}
 
-			int solutionRow = getSolutionRow(solution);
+			int solutionRow = getSolutionRow(solution, isFeature);
 
 			JSONArray interviewsArray = matrix[solutionRow][personaColumn];
 
@@ -124,13 +129,13 @@ public class CompanyCustDevMatrix extends FlexTable {
 		}
 	}
 
-	private void writePersonaLink(FlexTable problemTable) {
+	private void writeCornerLink(FlexTable problemTable) {
 
-		HTML personaTitle = new HTML(
+		HTML cornerTitle = new HTML(
 				"<center><b><font color=gray>"
-						+ "&nbsp;&nbsp; SOLUTION / PROBLEM <br>x<br> PERSONA &nbsp;&nbsp;"
+						+ "SOLUTION / PROBLEM<br>x<br>PERSONA"
 						+ "</font></b></center>");
-		personaTitle.addClickHandler(new ClickHandler() {
+		cornerTitle.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 
 				new UseTracking(this.getClass().getName());
@@ -139,7 +144,7 @@ public class CompanyCustDevMatrix extends FlexTable {
 			}
 		});
 
-		problemTable.setWidget(0, 0, personaTitle);
+		problemTable.setWidget(0, 0, cornerTitle);
 	}
 
 	private int getPersonaColumn(String targetPersona) {
@@ -189,7 +194,7 @@ public class CompanyCustDevMatrix extends FlexTable {
 		return problemRow;
 	}
 
-	private int getSolutionRow(String targetSolution) {
+	private int getSolutionRow(String targetSolution, final boolean isFeature) {
 
 		int solutionRow = solutionsList.indexOf(targetSolution) + 1;
 
@@ -204,8 +209,15 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 			solutionRow = solutionsList.indexOf(targetSolution) + 1;
 
-			this.setHTML(solutionRow, 0, "<b>" + targetSolution
-					+ "</b><br><font color=gray size=1>Solution</font>");
+			if (!isFeature) {
+
+				this.setHTML(solutionRow, 0, "<b>" + targetSolution
+						+ "</b><br><font color=gray size=1>Solution</font>");
+			} else {
+
+				this.setHTML(solutionRow, 0, "<b>" + targetSolution
+						+ "</b><br><font color=gray size=1>Feature</font>");
+			}
 		}
 
 		return solutionRow;
@@ -325,6 +337,11 @@ public class CompanyCustDevMatrix extends FlexTable {
 
 					rate = ConvertJson.getStringValue(interviewJson,
 							"satisfactionRate");
+					
+					if (SolutionRateListbox.MUST_HAVE.equals(rate)) {
+
+						solutionRateCount++;
+					}
 				}
 			}
 		}
@@ -391,5 +408,23 @@ public class CompanyCustDevMatrix extends FlexTable {
 		});
 
 		return customerLink;
+	}
+
+	private void writeBlanks(FlexTable problemTable) {
+
+		for (int i = 1; i < problemTable.getRowCount(); i++) {
+
+			for (int j = 1; j < problemTable.getCellCount(0); j++) {
+
+				try {
+
+					String content = problemTable.getText(i, j);
+
+				} catch (Exception e) {
+
+					problemTable.setText(i, j, " ");
+				}
+			}
+		}
 	}
 }
